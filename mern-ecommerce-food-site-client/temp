@@ -1,0 +1,43 @@
+
+import React, { Component, Fragment } from "react";
+import ReactDOM from "react-dom";
+import { Navbar, Nav } from "react-bootstrap";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { withRouter } from "react-router";
+
+const Header = props => {
+  const { location } = props;
+
+  return (
+    <Navbar bg= "light" variant = "light" >
+      <Nav activeKey={ location.pathname }>
+        <Nav.Link href="/" > Home < /Nav.Link>
+          < Nav.Link href = "/one" > One < /Nav.Link>
+            < Nav.Link href = "/two" > Two < /Nav.Link>
+              < /Nav>
+              < /Navbar>
+  );
+};
+const HeaderWithRouter = withRouter(Header);
+
+const Home = () => <h1>Home < /h1>;
+const One = () => <h1>One < /h1>;
+const Two = () => <h1>Two < /h1>;
+
+function App() {
+  return (
+    <div className= "App" >
+    <Router>
+    <Fragment>
+    <HeaderWithRouter />
+    < Route path = "/" exact component = { Home } />
+      <Route path="/one" exact component = { One } />
+        <Route path="/two" exact component = { Two } />
+          </Fragment>
+          < /Router>
+          < /div>
+  );
+}
+
+const rootElement = document.getElementById("root");
+ReactDOM.render(<App />, rootElement);
