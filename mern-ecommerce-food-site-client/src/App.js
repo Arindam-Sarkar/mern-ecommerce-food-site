@@ -10,16 +10,19 @@ import Payment from './pages/payment/Payment';
 import Cart from './pages/cart/Cart';
 import OrderDetails from './pages/orderDetails/OrderDetails';
 
+
+import Product from './components/product/Product';
+
+
 function App() {
   return (
     <>
 
       <Routes >
-        <Route path='/' element={< OrderDetails />} />
-        {/* <Route path='/pizza' element={< Pizza />} />
+        <Route path='/' element={< Pizza />} />
         <Route path='/pasta' element={< Pasta />} />
         <Route path='/burger' element={< Burger />} />
-        <Route path='/beverage' element={< Beverage />} /> */}
+        <Route path='/beverage' element={< Beverage />} />
       </Routes>
 
     </>

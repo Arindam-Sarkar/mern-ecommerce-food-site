@@ -1,0 +1,208 @@
+{
+  name: "Mexican Garlic Breadstix",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/mexican-garlic-breadstix-single.eab1259910d7d29cdba8ceb2e1b36355.1.jpg",
+      desc: "Freshly baked San Francisco Style breadsticks topped with chopped onion, green capsicum, red capsicum, jalapeno, black olives & drizzled with olive oil",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Cheese Garlic Bread",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/cheese-garlic-bread.58019ad8ec813e53cbf2b7d7f1b7cacc.1.jpg",
+      desc: "Garlic Bread With 100% Mozzarella Cheese",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Garlic Bread Stix",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/garlic-bread-stix.483aa904aa663102c645ce56261d360d.1.jpg",
+      desc: "Freshly Baked Buttery Garlic Bread Sticks",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Creamy Garlic Bread Stix",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/creamy-garlic-bread-stix.53825d02235a58ba128e39e938fe7aa1.1.jpg",
+      desc: "Freshly Baked, Buttery Garlic Bread Stix, Topped With A Gooey Cheese Sauce",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Garlic Bread Spicy Supreme",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/garlic-bread-spicy-supreme.9dc99438516ccb4c5b6a5ac5a1a7a220.1.jpg",
+      desc: "Garlic Bread With Cheese, Onion & Green Chilies",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "So Cheesy Baked Momos Veg",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/so-cheesy-baked-momos-veg-single.1c1aca2fefccf3f4fc4067ce33571718.1.jpg",
+      desc: "Momo stuffed with creamy veggies, sweet corn & gooey cheese, baked in spicy schezwan sauce, cheesy dressing, topped with 100% mozzarella cheese",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "So Cheesy Baked Momos Non Veg",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/so-cheesy-baked-momos-non-veg-single.1c1aca2fefccf3f4fc4067ce33571718.1.jpg",
+      desc: "Momo stuffed with amazingly flavourful cheesy & creamy chicken, baked in spicy schezwan sauce, cheesy dressing, topped with 100% mozzarella cheese",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: true
+},
+{
+  name: "Baked Cheesy Momos Veg",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/baked-cheesy-momos-veg-single.1ef0e77a28958e19bf940c1e310ebf40.1.jpg",
+      desc: "Paneer & veg momos baked in spicy Schezwan sauce & creamy mayo, topped with mozerella cheese. Baked to perfection !",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Baked Cheesy Momos Non Veg",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/baked-cheesy-momos-non-veg-single.1c1aca2fefccf3f4fc4067ce33571718.1.jpg",
+      desc: "Chicken momos baked in spicy Schezwan sauce & creamy mayo, topped with mozerella cheese. Baked to perfection !",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: true
+},
+{
+  name: "Momo Dip",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/schezwan-dip-single.212b7b4f080b2c18a19f8de79ab4ce3a.1.jpg",
+      desc: "Momo Dip",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Veg Mayonnaise Dip",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/veg-mayonnaise-dip-single.36f1422f2e7f102a7c57f923c02fec94.1.jpg",
+      desc: "Veg Mayonnaise Dip",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Cheesy Dip",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/cheesy-dip-single.9f069337fcf64460782c74850d1c3ba6.1.jpg",
+      desc: "Cheesy Dip",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Potato Poppers",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/potato-poppers.c7829dd24d7aebb494bd658b0ea2d4d8.1.jpg",
+      desc: "Potato Poppers",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Indi Rockin Roll Veg",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/indi-rockin-roll-veg.b3b696a81e85f65983d2a91326839b47.1.jpg",
+      desc: "Soft Tortilla Roll Stuffed With Veg Kebab, Mint Mayo & Melted Mozzarella Cheese Goodness",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Indi Rockin Roll Non Veg",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/indi-rockin-roll-non-veg.f1c8922068c1aeb205148cc11f245a92.1.jpg",
+      desc: "Soft Tortilla Roll Stuffed With Chicken Tikka, Mint Mayo & Melted Mozzarella Cheese Goodness",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: true
+},
+{
+  name: "Zesty Paneer Pocket",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/zesty-veg-pocket.ba790bc6fa8f27ea8e99e31c4edc7c48.1.jpg",
+      desc: "Freshly Baked Pocket Stuffed With Flavourful Paneer, Veggies & Smoked Texas Garlic Sauce",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Zesty Chicken Pocket",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/zesty-chicken-pocket.dbe88abe1adeee1dc4d5bec7390327f0.1.jpg",
+      desc: "Freshly Baked Pocket Stuffed With Chicken, Veggies & Smoked Texas Garlic Sauce",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: true
+},
+{
+  name: "Jalapeno Poppers",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/jalapeno-poppers.0570e4206c04cedf358b656e0f47c664.1.jpg",
+      desc: "Jalapeno Poppers With Gooey White Sauce",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Spicy Baked Chicken Wings (4 pcs)",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/spicy-baked-chicken-wings-4pcs.0e022327c5ee3108c2e6fc3f89a76ff7.1.jpg",
+      desc: "4 Pieces Of Spicy, Tender Chicken Wings",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: true
+},
+{
+  name: "Spicy Baked Chicken Wings",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/spicy-baked-chicken-wings.47e2a22f9bc8064237dce3e0ce38a424.1.jpg",
+      desc: "6 Pieces Of Spicy, Tender Chicken Wings",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Creamy Mushroom Pasta",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/creamy-mushroom-pasta-single.cf2ea0b00c49b1c95e7d25601c503314.1.jpg",
+      desc: "Pasta in rich creamy mushroom sauce flavoured with garlic & parsley",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Cheesy Comfort Veg Pasta",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/cheesy-comfort-veg-single.0873be18115a4db89e866f9fd0155af7.1.jpg",
+      desc: "Cheesy Creamy Pasta Comfort Topped With Onion, Green Capsicum, Red Capsicum & Sweet Corn",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Cheesy Comfort Chicken Pasta",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/cheesy-comfort-chicken-single.77df0c1539e9a9fd4db9259dcc6e153c.1.jpg",
+      desc: "Cheesy Creamy Pasta Comfort Topped With Chicken Sausage, Onion, Green Capsicum & Red Capsicum",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: true
+},
+{
+  name: "Spiced Tomato Twist Veg Pasta",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/spiced-tomato-twist-veg-single.1de34af95e344a32c49a94da430b5418.1.jpg",
+      desc: "Tangy Flavourful Red Sauce Pasta Infused With Heavenly Herbs & Spices Topped With Onion, Green Capsicum & Red Capsicum",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "Spiced Tomato Twist Chicken Pasta",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/spiced-tomato-twist-chicken-pasta-single.4f1b13d88e1fdfafd275ac2d9db67bfa.1.jpg",
+      desc: "Tangy Flavourful Red Sauce Pasta Infused With Heavenly Herbs & Spices Topped With Chicken Sausage",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
+{
+  name: "",
+    imageUrl: "",
+      desc: "",
+        type: "Pizza",
+          cost: 200,
+            nonVeg: false
+},
