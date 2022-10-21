@@ -1,0 +1,232 @@
+.pZMCont {
+  position: fixed;
+
+  width: 97%;
+  height: 95vh;
+
+  top: 2%;
+  left: 1.5%;
+
+  border: 1px solid black;
+  background-color: white;
+}
+
+.pZCont {}
+
+.pZName {
+  padding-top: 2%;
+  padding-left: 2%;
+
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.pZDiscription {
+  padding-top: 2%;
+  padding-left: 2%;
+
+  font-size: 1.2rem;
+}
+
+.pZCancelButton {
+  font-size: 2rem;
+
+  position: absolute;
+  top: 2%;
+  right: 3%;
+
+  cursor: pointer;
+}
+
+.ProductZoomedCustomiseMainCont {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.ProductZoomedCustomiseLeftCont {
+  margin: 0;
+  padding: 0;
+
+  padding-top: 2%;
+  padding-left: 2%;
+
+  border: 1px solid black;
+
+  width: 75%;
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+
+
+.pZSizeRadioButtonCont {
+  margin: 0;
+  padding: 0;
+
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pZSizeRadioButtonICont {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2%;
+}
+
+.pZSizeRadioButtonICont>h2 {
+  margin: 0;
+  padding: 0;
+  margin-right: 10px;
+}
+
+.pZSizeRadioButton {
+  margin: 0;
+  padding: 0;
+
+  font-size: 1.5rem;
+}
+
+.pZSizeRadioButton>input {
+  margin: 0;
+  padding: 0;
+
+  width: 1.2rem;
+  height: 1.2rem;
+  cursor: pointer;
+}
+
+.pZSizeRadioButton>label {
+  margin: 0;
+  padding: 0;
+
+  font-size: 1rem;
+  padding-left: 1%;
+}
+
+.pZExtraCheeseCont {
+  margin: 0;
+  padding: 0;
+
+  height: 20%;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.pZExtraCheeseCont>label {
+  font-size: 1.5rem;
+}
+
+.pZExtraCheeseCont>input {
+  width: 1.2rem;
+  height: 1.2rem;
+
+  margin-right: 8%;
+}
+
+.pZExtraVegetableCont {
+  margin: 0;
+  padding: 0;
+
+  height: 20%;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.pZExtraVegetableCont>label {
+  font-size: 1.5rem;
+}
+
+.pZExtraVegetableCont>input {
+  width: 1.2rem;
+  height: 1.2rem;
+
+  margin-right: 8%;
+}
+
+.pZExtraChickenCont {
+  margin: 0;
+  padding: 0;
+
+  height: 20%;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 20px;
+}
+
+.pZExtraChickenCont>label {
+  font-size: 1.5rem;
+}
+
+.pZExtraChickenCont>input {
+  width: 1.2rem;
+  height: 1.2rem;
+
+  margin-right: 8%;
+}
+
+.ProductZoomedCustomiseRightCont {
+  margin: 0;
+  padding: 0;
+
+  padding-top: 2%;
+  padding-right: 2%;
+
+  border: 1px solid black;
+
+  width: 25%;
+  height: 80%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+
+}
+
+.ProductZoomedCustomiseRightCont>div {
+  /* border: 1px solid green; */
+
+  height: 40%;
+  font-size: 1.5rem;
+
+  margin-bottom: 5vh;
+}
+
+.ProductZoomedCustomiseRightTotal {
+  position: absolute;
+  top: 75%;
+  right: 22%;
+}
+
+@media (min-width: 600px) {
+  .ProductZoomedCustomiseRightTotal {
+    position: absolute;
+    top: 75%;
+    right: 10%;
+  }
+}

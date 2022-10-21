@@ -1,10 +1,32 @@
+const PIZZA_SIZE_SMALL = 0
+const PIZZA_SIZE_MEDIUM = 1
+const PIZZA_SIZE_LARGE = 2
+
 export const foodDataResource = [
   {
     name: "Margherita",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/margherita.90f9451fd66871fb6f9cf7d506053f18.1.jpg",
     desc: "Cheese",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false,
   },
   {
@@ -12,7 +34,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/tandoori-paneer.4ef45717e972cf45b43c010e3cde5a22.1.jpg",
     desc: "Spiced paneer, Onion, Green Capsicum & Red Paprika in Tandoori Sauce",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -20,7 +60,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/veggie-supreme.bc8dd369182b636ff171077efa53c344.1.jpg",
     desc: "Black Olives, Green Capsicum, Mushroom, Onion, Red Paprika, Sweet Corn",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -28,7 +86,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/double-paneer-supreme.3cb382529b41d14d4a041b5cc5e64341.1.jpg",
     desc: "Spiced Paneer, Herbed Onion & Green Capsicum, Red Paprika",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -36,7 +112,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/veg-kebab-surprise.abab1dff179ab8cf95a59f30d6352297.1.jpg",
     desc: "Veg Kebab, Onion, Green Capsicum, Tomato & Sweet Corn in Tandoori Sauce ",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -44,7 +138,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-supreme.6d53f104f071d304a47440f2fffa7378.1.jpg",
     desc: "Herbed Chicken, Schezwan Chicken Meatball, Chicken Tikka",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -52,7 +164,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-tikka-supreme.830de5a911ca95a30e4ca98e529f1b3a.1.jpg",
     desc: "Chicken Tikka, Chicken Malai Tikka, Onion, Red Paprika",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -60,7 +190,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/triple-chicken-feast.e4a546e7a8581a60952b99e3fe22987e.1.jpg",
     desc: "Schezwan Chicken Meatball, Herbed Chicken, Chicken Sausage, Green Capsicum, Onion, Red Paprika",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -68,7 +216,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-tikka.6d441a65371e941db36c2754586119a8.1.jpg",
     desc: "Chicken Tikka, Onion, Tomato",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -76,7 +242,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/double-chicken-sausage.f172dd6a365e90e655258b17555e74ad.1.jpg",
     desc: "Chicken Sausage",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -84,7 +268,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/classic-corn-pan-personal.7c80196383b32e2ad5715646c1b12df8.1.png",
     desc: "Pizza topped with our Classic Pan sauce, sweet corn and cheesy dressing. An all-time favorite",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -92,7 +294,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/classic-onion-capsicum-pan-personal.dad788ecbd3fcc57366462827e31ee05.1.jpg",
     desc: "Pizza topped with our Classic Pan sauce, crunchy onion & capsicum and cheesy dressing.",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -100,7 +320,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/italian-onion-tomato-pan-personal.cb37b0766ef3ba8844fa69b2d073c215.1.jpg",
     desc: "Pizza topped with our Chef's Special Italian sauce, crunchy onion, juicy tomatoes and cheesy dressing.",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -108,7 +346,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/tandoori-mushroom-&-sweet-corn-pan-personal.49a1287d1cece07781c106e552979fa2.1.jpg",
     desc: "Pizza topped with our signature tandoori sauce, juicy mushroom, sweet corn and cheesy dressing.",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -116,7 +372,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/schezwan-corn-&-capsicum-pan-personal.23c83846270110a536b40ec74529e907.1.jpg",
     desc: "Pizza topped with Spicy Schezwan sauce, sweet corn & crunchy capsicum and cheesy dressing.",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -124,7 +398,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/only-cheesy-pan-personal.951dbe6ee07dafc48e04fe9a1bbe4ddb.1.jpg",
     desc: "Pizza topped with cheesy dressing and mozzarella cheese for that extraaa cheesy flavor.",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -132,7 +424,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/classic-sausage-pan-personal.fbbfbce57f62a8d8b366db5f66798704.1.jpg",
     desc: "Pizza topped with our Classic Pan sauce, flavorful chicken sausage and cheesy dressing.",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -140,7 +450,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/classic-paneer-capsicum-&-onion-pan-personal.ae2c5f3e3e5881af1f31e65cb9526289.1.jpg",
     desc: "Pizza topped with our Classic Pan sauce, flavorful paneer, crunchy onion & capsicum and cheesy dressing.",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -148,7 +476,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/italian-pepperoni-&-onion-pan-personal.b6c0c99c9241f2fce14493773f625dd3.1.jpg",
     desc: "Pizza topped with our Chef's Special Italian sauce, crunchy onion, chicken pepperoni and cheesy dressing.",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -156,7 +502,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/schezwan-meatball-&-capsicum-pan-personal.e27dd4520db7e81fbebeec8428a925bf.1.jpg",
     desc: "Pizza topped with Spicy Schezwan sauce, crunchy capsicum, Schezwan meatballs and cheesy dressing making it spice lovers paradise.",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -164,7 +528,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/tandoori-tikka-&-onion-pan-personal.e47a58535b3ef920e00d559d79defad4.1.jpg",
     desc: "Pizza topped with our signature tandoori sauce, crunchy onion, flavorful chicken tikka and cheesy dressing.",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -172,7 +554,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/classic-loaded-chicken-delight-pan-personal.8d0b6cb6bc34a734679ac40004edba10.1.jpg",
     desc: "Pizza topped with our Classic Pan sauce, herbed chicken, flavorful sausages, juicy tomato and cheesy dressing.",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -180,7 +580,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/momo-mia-veg.5f34ea52c10db4a56881051692a618ca.1.jpg",
     desc: "Epic combination of signature pan crust, delicious paneer & veg momos topped with spicy Schezwan sauce, onion, capsicum, sweet corn & 100% mozzarella",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -188,7 +606,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/momo-mia-non-veg.bfd96b4a31f0246703333a3feac75f4c.1.jpg",
     desc: "Epic combination of signature pan crust, delicious chicken momos topped with spicy Schezwan sauce, Schezwan meatballs, onion, capsicum & 100% mozzarella",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -196,7 +632,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/cheesy-momo-mia-pizza-veg-pan-personal.e8d96b7e3826e444bbea5beeda669e76.1.jpg",
     desc: "Cheesy Veg Momos, filled with creamy veggies, sweet corn & gooey cheese, resting on a dallop of cheesy dressing on the crust with pizza base topped with spicy schezwan sauce, onion, capsicum, sweet corn & 100% mozzarella cheese !",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -204,7 +658,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/cheesy-momo-mia-pizza-non-veg-pan-personal.9cbd2e4f085568622b64bc7418a4cf54.1.jpg",
     desc: "Cheesy Chicken Momos, filled with flavourful cheesy & creamy chicken, resting on a dallop of cheesy dressing on the crust with pizza base topped with spicy schezwan sauce, onion, capsicum, cheesy chicken sausage, & 100% mozzarella cheese!",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -212,7 +684,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/double-cheese.3c8885f8bc6f18facedc7626368f5105.1.jpg",
     desc: "Extra Cheese on Cheese",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -220,7 +710,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/spiced-paneer.e577e25023a1baeb72b6381bf6692a73.1.jpg",
     desc: "Masala Paneer, Onion, Tomato",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -228,7 +736,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/veggie-feast.3777f9846c8e993276a25838b8737ea7.1.jpg",
     desc: "Herbed Onion & Green Capsicum, Sweet Corn",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -236,7 +762,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/veggie-tandoori.f0c9bb5d6af29e4d58efd7b8043173e3.1.jpg",
     desc: "Onion, Green Capsicum & Mushroom in Tandoori Sauce",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -244,7 +788,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/spiced-chicken-meatballs.abd238e81080106d181567a9b52844ae.1.jpg",
     desc: "Schezwan Chicken Meatball, Onion",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -252,7 +814,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-n-corn-delight.61cc42effb2de18e6625796c964dd92d.1.jpg",
     desc: "Herbed Chicken, Sweet Corn, Green Capsicum",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -260,7 +840,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/double-chicken-sausage.f172dd6a365e90e655258b17555e74ad.1.jpg",
     desc: "Chicken Sausage",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -268,7 +866,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/country-feast.5ebefb4b888a936ec27b39c2c76f8fbb.1.jpg",
     desc: "Herbed Onion & Green capsicum, Sweet Corn, Tomato, Mushroom",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -276,7 +892,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/farmers-pick.794695a631c14d4404057470020be703.1.jpg",
     desc: "Herbed Onion & Green Capsicum, Red Capsicum, Mushroom, Baby Corn",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -284,7 +918,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/veggie-lover.0d5a4f7add53f6dde0511d28aea0139e.1.jpg",
     desc: "Onion, Green Capsicum, Mushroom, Tomato, Red Paprika",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -292,7 +944,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-pepper-crunch.624edb192601b73335e0100db5a6263a.1.jpg",
     desc: "Herbed Chicken, Onion, Green Capsicum, Red Capsicum",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -300,7 +970,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/malai-chicken-tikka.8549caa7a6c711026bfe753fa1bc5525.1.jpg",
     desc: "Chicken Malai Tikka, Herbed Onion & Green Capsicum, Red Paprika",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -308,7 +996,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/chicken-pepperoni.6952ef03215b72477abff3574b4b881e.1.jpg",
     desc: "Cheese, Chicken Pepperoni",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {
@@ -316,7 +1022,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/veg-exotica.49132c94f9aa19e961fa3f6169c7b735.1.jpg",
     desc: "Baby Corn, Black Olives, Green Capsicum, Jalapeno, Red Capsicum",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -324,7 +1048,25 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/italian-chicken-feast.edad91a082e9a16d677722a071487a1c.1.jpg",
     desc: "Chicken Sausage, Chicken Pepperoni, Sweet Corn, Black Olive, Jalapeno",
     type: "Pizzas",
-    cost: 200,
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
     nonVeg: true
   },
   {

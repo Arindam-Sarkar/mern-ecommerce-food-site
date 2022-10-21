@@ -8,12 +8,12 @@ import { useLocation } from 'react-router-dom'
 
 
 const Search = () => {
-  const [searchData, setSearchData] = useState([{ undefined }]);
+  const [searchData, setSearchData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("")
   const location = useLocation()
 
   useEffect(() => {
-    setSearchData([{ undefined }])
+    setSearchData([])
     setSearchTerm("")
 
     setSearchTerm(location.search?.slice(1).toLowerCase().toString())
@@ -35,8 +35,11 @@ const Search = () => {
         }
       })
 
-      if (searchDataTmp) {
+      if (searchDataTmp.length != 0) {
+        console.log("Writing");
         setSearchData(searchDataTmp)
+      } else {
+        setSearchData([])
       }
     }
 
@@ -44,11 +47,12 @@ const Search = () => {
 
   return (
     <>
-      {(searchTerm.length !== 0) ?
+      {(searchData.length !== 0) ?
         (<div className='pageMcont'>
           <div className='pageCont'>
             {
               searchData.map((item, index) => {
+                console.log(item)
                 if (item !== undefined) {
                   return (
                     <div className="pageProduct" key={index} >

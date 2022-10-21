@@ -1,29 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './product.css'
 import ProductZoomed from '../productZoomed/ProductZoomed'
 
 const Product = ({ item }) => {
+  const [showProductZoomed, setShowProductZoomed] = useState(true)
 
-  // console.log(item);
+  const showProductZoomHandler = (input) => {
+    setShowProductZoomed(input)
+  }
+
   return (
     <div>
-      {(item !== undefined) ?
-        (
-          <div className='productMCont'>
-            <div className='productCont'>
-              <img
-                className='productImg'
-                src={`${item?.imageUrl}?width=251`}
-                alt="" />
+      {
+        (item !== undefined) ?
+          (
+            <div className='productMCont'>
+              <div className='productCont'>
 
-              <h1 className='productH1'>{item?.name}</h1>
-              <div className='productP'>{item?.desc?.substring(0, 30)}...</div>
+                {showProductZoomed &&
+                  < ProductZoomed
+                    showProductZoomHandler={showProductZoomHandler}
+                    inputItem={item} />}
 
-              <button className='productB'>View More</button>
+                <img
+                  className='productImg'
+                  src={`${item?.imageUrl}?width=251`}
+                  alt="" />
+
+                <h1 className='productH1'>{item?.name}</h1>
+                <div className='productP'>{item?.desc?.substring(0, 30)}...</div>
+
+                <button
+                  onClick={() => showProductZoomHandler(true)}
+                  className='productButton'>View More</button>
+              </div>
             </div>
-          </div>) : (<></>)
+          ) : (<></>)
       }
-
     </div>
   )
 }
