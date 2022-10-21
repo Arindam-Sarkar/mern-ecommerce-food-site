@@ -5,17 +5,110 @@ import "./productZoomed.css"
 import { foodDataResource } from '../../foodData'
 import { useState } from 'react'
 
+export const PIZZA_SIZE_SMALL = 0
+export const PIZZA_SIZE_MEDIUM = 1
+export const PIZZA_SIZE_LARGE = 2
+
 const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
   const [item, setItem] = useState(inputItem)
 
   const pizzItemHandler = (type, value) => {
     console.log("type = ", type, "value = ", value)
+    let itemTmp = item;
 
     if (type === "size") {
+      let {
+        size, sizeBilledCost,
+        extraCheese, extraCheeseBilledCost,
+        extraVegetable, extraVegetableBilledCost,
+        extraChicken, extraChickenBilledCost,
+        ...remaining } = itemTmp
+
+      size = value
+      sizeBilledCost = itemTmp.sizeCost[size]
+
+      // Calculate billed cost for extra cheese if enabled
+      if (extraCheese === true) {
+        extraCheeseBilledCost = itemTmp.extraCheeseCost[size]
+        itemTmp = { extraCheese, extraCheeseBilledCost, ...remaining }
+      }
+
+      // Calculate billed cost for extra vegetable if enabled
+      if (extraVegetable === true) {
+        extraVegetableBilledCost = itemTmp.extraVegetableCost[size]
+        itemTmp = { extraVegetable, extraVegetableBilledCost, ...remaining }
+      }
+
+      // Calculate billed cost for extra chicken if enabled
+      if (extraChicken === true) {
+        extraChickenBilledCost = itemTmp.extraChickenCost[size]
+        itemTmp = { extraChicken, extraChickenBilledCost, ...remaining }
+      }
 
 
+
+      itemTmp = {
+        size, sizeBilledCost,
+        extraCheese, extraCheeseBilledCost,
+        extraVegetable, extraVegetableBilledCost,
+        extraChicken, extraChickenBilledCost,
+        ...remaining
+      }
+      setItem(itemTmp)
+      return
     }
 
+
+    // Calculate billed cost for extra cheese
+    if ((type === "extraCeese")) {
+      let { extraCheese, extraCheeseBilledCost, ...remaining } = itemTmp
+
+      if (value === true) {
+        extraCheese = true
+        extraCheeseBilledCost = itemTmp.extraCheeseCost[itemTmp.size]
+        itemTmp = { extraCheese, extraCheeseBilledCost, ...remaining }
+        setItem(itemTmp)
+      } else {
+        extraCheese = false
+        extraCheeseBilledCost = 0
+        itemTmp = { extraCheese, extraCheeseBilledCost, ...remaining }
+        setItem(itemTmp)
+      }
+    }
+
+    // Calculate billed cost for extra vegetable
+    if ((type === "extraVegetables")) {
+      let { extraVegetable, extraVegetableBilledCost, ...remaining } = itemTmp
+
+      if (value === true) {
+        extraVegetable = true
+        extraVegetableBilledCost = itemTmp.extraVegetableCost[itemTmp.size]
+        itemTmp = { extraVegetable, extraVegetableBilledCost, ...remaining }
+        setItem(itemTmp)
+      } else {
+        extraVegetable = false
+        extraVegetableBilledCost = 0
+        itemTmp = { extraVegetable, extraVegetableBilledCost, ...remaining }
+        setItem(itemTmp)
+      }
+    }
+
+    // Calculate billed cost for extra chicken
+    if ((type === "extraChicken")) {
+      let { extraChicken, extraChickenBilledCost, ...remaining } = itemTmp
+
+      if (value === true) {
+        extraChicken = true
+        extraChickenBilledCost = itemTmp.extraChickenCost[itemTmp.size]
+        itemTmp = { extraChicken, extraChickenBilledCost, ...remaining }
+        setItem(itemTmp)
+      } else {
+        extraChicken = false
+        extraChickenBilledCost = 0
+        itemTmp = { extraChicken, extraChickenBilledCost, ...remaining }
+        setItem(itemTmp)
+      }
+    }
 
   }
 
@@ -45,19 +138,19 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
                 <div className='pZSizeRadioButtonICont'>
                   <div className='pZSizeRadioButton'>
                     <input
-                      onClick={() => pizzItemHandler("size", "small")}
+                      onClick={() => pizzItemHandler("size", PIZZA_SIZE_SMALL)}
                       type="radio" id="small" name="size" defaultChecked />
                     <label htmlFor="small">Small</label>
                   </div>
                   <div className='pZSizeRadioButton'>
                     <input
-                      onClick={() => pizzItemHandler("size", "medium")}
+                      onClick={() => pizzItemHandler("size", PIZZA_SIZE_MEDIUM)}
                       type="radio" id="medium" name="size" />
                     <label htmlFor="medium">Medium</label>
                   </div>
                   <div className='pZSizeRadioButton'>
                     <input
-                      onClick={() => pizzItemHandler("size", "large")}
+                      onClick={() => pizzItemHandler("size", PIZZA_SIZE_LARGE)}
                       type="radio" id="large" name="size" />
                     <label htmlFor="large">Large</label>
                   </div>
@@ -99,7 +192,8 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
               <div className='ProductZoomedCustomiseRightTotal'>Total : {
                 (item.sizeBilledCost +
                   item.extraCheeseBilledCost +
-                  item.extraVegetableBilledCost)
+                  item.extraVegetableBilledCost +
+                  item.extraChickenBilledCost)
               }</div>
             </div>
 

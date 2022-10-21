@@ -1,6 +1,6 @@
-const PIZZA_SIZE_SMALL = 0
-const PIZZA_SIZE_MEDIUM = 1
-const PIZZA_SIZE_LARGE = 2
+export const PIZZA_SIZE_SMALL = 0
+export const PIZZA_SIZE_MEDIUM = 1
+export const PIZZA_SIZE_LARGE = 2
 
 export const foodDataResource = [
   {
