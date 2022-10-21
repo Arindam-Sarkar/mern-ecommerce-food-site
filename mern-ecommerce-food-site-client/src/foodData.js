@@ -531,7 +531,7 @@ export const foodDataResource = [
     name: "Choco Volcano Cake",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/dessert/choco-volcano-cake.f829dc6e30a07b83f232b4880395162f.1.jpg",
     desc: "Choco Delight With A Gooey Chocolate Volcano Centre",
-    type: "Deserts",
+    type: "Desserts",
     cost: 200,
     nonVeg: false
   },
@@ -539,7 +539,7 @@ export const foodDataResource = [
     name: "Pepsi",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/pepsi.ebd77460b7e104a70753241ad502abca.1.jpg",
     desc: "Contains Caffeine",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -547,7 +547,7 @@ export const foodDataResource = [
     name: "Pepsi Black",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/pepsi-black.05bd5ce9c59d6fea34befe77a4c5bdee.1.jpg",
     desc: "Contains Caffeine",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -555,7 +555,7 @@ export const foodDataResource = [
     name: "Mirinda",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/mirinda.b67f0e29703e70fd5dfe91f900dc0046.1.jpg",
     desc: "Contains Caffeine",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -563,7 +563,7 @@ export const foodDataResource = [
     name: "7-UP",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/7-up.15b00a4f5a8acd746ca6ae6f6e2d0330.1.jpg",
     desc: "Contains Caffeine",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -571,7 +571,7 @@ export const foodDataResource = [
     name: "Masala Lemonade",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/masala-lemonade.671f99d3f05e6a9bfa620046ac5168c4.1.jpg",
     desc: "Masala Lemonade",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -579,7 +579,7 @@ export const foodDataResource = [
     name: "Masala Pepsi",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/masala-pepsi.557d0a593755b9bbd8cde2da66fd2581.1.jpg",
     desc: "Masala Pepsi",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -587,7 +587,7 @@ export const foodDataResource = [
     name: "Masala Mirinda",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/masala-mirinda.3f89eae9de5cdc4aa6c2f91f61cd8611.1.jpg",
     desc: "Masala Mirinda",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -595,7 +595,7 @@ export const foodDataResource = [
     name: "Jamuntini",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/jamuntini-350ml.3f8790dc78399da2e37e9cf0020c4bff.1.jpg",
     desc: "Fresh Blast OfJamun With A Hint Of Refreshing Mint",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -603,7 +603,7 @@ export const foodDataResource = [
     name: "Pepsi Glass",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/pepsi-glass-350ml.1cf5171b7365952e64ee1fe39092f329.1.jpg",
     desc: "Contains Caffeine",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -611,7 +611,7 @@ export const foodDataResource = [
     name: "Pepsi Duos Combo",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/pepsi-duos-combo-700ml.da5dfa583064c8ef572ae4bd9505b46d.1.jpg",
     desc: "Combo of 2 Pepsi Glasses",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -619,7 +619,7 @@ export const foodDataResource = [
     name: "Pepsi Family Combo",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/pepsi-family-combo-1400ml.52fe28b48cab69da97dbb79990d34b4b.1.jpg",
     desc: "Combo of 4 Pepsi Glasses",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -627,7 +627,7 @@ export const foodDataResource = [
     name: "Mirinda Glass",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/mirinda-glass-350ml.04ef933778eebd80bc403856f4765838.1.jpg",
     desc: "Contains Caffeine",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -635,7 +635,7 @@ export const foodDataResource = [
     name: "Mirinda Duos Combo",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/mirinda-duos-combo-700ml.cb9d1c74dd03047e3e55a05e8dbdc0d8.1.jpg",
     desc: "Combo of 2 Mirinda Glasses",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -643,7 +643,7 @@ export const foodDataResource = [
     name: "Mirinda Family Combo",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/mirinda-family-combo-1400ml.1feb8a2dc5456c61d2a72a3ecf80421e.1.jpg",
     desc: "Combo of 4 Mirinda Glasses",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -651,7 +651,7 @@ export const foodDataResource = [
     name: "7up Glass",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/7up-glass-350ml.a020a483561f8c95bca0de380e41c020.1.jpg",
     desc: "Contains Caffeine",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -659,7 +659,7 @@ export const foodDataResource = [
     name: "7up Duos Combo",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/7up-duos-combo-700ml.2ef2a5200d895c9d0240b40345f0bd78.1.jpg",
     desc: "Combo of 2 7up Glasses",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   },
@@ -667,7 +667,7 @@ export const foodDataResource = [
     name: "7up Family Combo",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/7up-family-combo-1400ml.9ce1c5348effcd21f160260ad86ea99d.1.jpg",
     desc: "Combo of 4 7up Glasses",
-    type: "Beverages",
+    type: "Drinks",
     cost: 200,
     nonVeg: false
   }

@@ -1,5 +1,5 @@
 .productMCont {
-  width: 450px;
+  width: 430px;
   height: 600px;
 
   display: flex;
@@ -17,9 +17,6 @@
     align-items: center;
   }
 }
-
-
-
 
 .productCont {
   width: 100%;
@@ -40,15 +37,15 @@
 
 .productH1 {
   align-self: flex-start;
-  padding-left: 7%;
+  padding-left: 5%;
   padding-top: 2%;
 
-  font-size: 3rem;
+  font-size: 1.5rem;
 }
 
 .productP {
   align-self: flex-start;
-  padding-left: 7%;
+  padding-left: 5%;
   padding-top: 2%;
   font-size: 1.5rem;
 }

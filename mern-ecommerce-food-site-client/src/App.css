@@ -32,7 +32,36 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.pageMcont {
+  width: 100vw;
+  height: 100vh;
+
+  padding-top: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageCont {
+  width: 90%;
+  height: 90%;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.pageProduct {
+  /* margin-top: px; */
 }

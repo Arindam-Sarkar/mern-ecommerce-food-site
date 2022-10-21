@@ -1,22 +1,23 @@
 import React, { useState } from 'react'
 import NavbarComp from '../../components/navbar/NavbarComp'
 import Product from '../../components/product/Product'
-import './pizza.css'
+import './sides.css'
 
 import { foodDataResource } from '../../foodData'
-const Pizza = () => {
-  const [pizzaData, setPizzaData] = useState(foodDataResource);
+const Sides = () => {
+  const [sidesData, setSidesData] = useState(foodDataResource);
 
 
   return (
     <>
       {/* <NavbarComp /> */}
+
       <div className='pageMcont'>
 
         <div className='pageCont'>
           {
-            pizzaData.map((item, index) => {
-              if (item.type === "Pizzas") {
+            sidesData.map((item, index) => {
+              if (item.type === "Sides") {
                 return (
                   <div className="pageProduct" key={index} >
                     <Product item={item} />
@@ -31,4 +32,4 @@ const Pizza = () => {
   )
 }
 
-export default Pizza
+export default Sides
