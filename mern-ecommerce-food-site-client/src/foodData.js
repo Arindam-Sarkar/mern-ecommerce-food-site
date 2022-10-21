@@ -1074,7 +1074,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/mexican-garlic-breadstix-single.eab1259910d7d29cdba8ceb2e1b36355.1.jpg",
     desc: "Freshly baked San Francisco Style breadsticks topped with chopped onion, green capsicum, red capsicum, jalapeno, black olives & drizzled with olive oil",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 0,
+
     nonVeg: false
   },
   {
@@ -1082,7 +1085,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/cheese-garlic-bread.58019ad8ec813e53cbf2b7d7f1b7cacc.1.jpg",
     desc: "Garlic Bread With 100% Mozzarella Cheese",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1090,7 +1096,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/garlic-bread-stix.483aa904aa663102c645ce56261d360d.1.jpg",
     desc: "Freshly Baked Buttery Garlic Bread Sticks",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1098,7 +1107,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/creamy-garlic-bread-stix.53825d02235a58ba128e39e938fe7aa1.1.jpg",
     desc: "Freshly Baked, Buttery Garlic Bread Stix, Topped With A Gooey Cheese Sauce",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1106,7 +1118,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/garlic-bread-spicy-supreme.9dc99438516ccb4c5b6a5ac5a1a7a220.1.jpg",
     desc: "Garlic Bread With Cheese, Onion & Green Chilies",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1114,7 +1129,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/so-cheesy-baked-momos-veg-single.1c1aca2fefccf3f4fc4067ce33571718.1.jpg",
     desc: "Momo stuffed with creamy veggies, sweet corn & gooey cheese, baked in spicy schezwan sauce, cheesy dressing, topped with 100% mozzarella cheese",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1122,7 +1140,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/so-cheesy-baked-momos-non-veg-single.1c1aca2fefccf3f4fc4067ce33571718.1.jpg",
     desc: "Momo stuffed with amazingly flavourful cheesy & creamy chicken, baked in spicy schezwan sauce, cheesy dressing, topped with 100% mozzarella cheese",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: true
   },
   {
@@ -1130,7 +1151,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/baked-cheesy-momos-veg-single.1ef0e77a28958e19bf940c1e310ebf40.1.jpg",
     desc: "Paneer & veg momos baked in spicy Schezwan sauce & creamy mayo, topped with mozerella cheese. Baked to perfection !",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1138,7 +1162,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/baked-cheesy-momos-non-veg-single.1c1aca2fefccf3f4fc4067ce33571718.1.jpg",
     desc: "Chicken momos baked in spicy Schezwan sauce & creamy mayo, topped with mozerella cheese. Baked to perfection !",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: true
   },
   {
@@ -1146,7 +1173,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/schezwan-dip-single.212b7b4f080b2c18a19f8de79ab4ce3a.1.jpg",
     desc: "Momo Dip",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1154,7 +1184,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/veg-mayonnaise-dip-single.36f1422f2e7f102a7c57f923c02fec94.1.jpg",
     desc: "Veg Mayonnaise Dip",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1162,7 +1195,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/cheesy-dip-single.9f069337fcf64460782c74850d1c3ba6.1.jpg",
     desc: "Cheesy Dip",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1170,7 +1206,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/potato-poppers.c7829dd24d7aebb494bd658b0ea2d4d8.1.jpg",
     desc: "Potato Poppers",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1178,7 +1217,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/indi-rockin-roll-veg.b3b696a81e85f65983d2a91326839b47.1.jpg",
     desc: "Soft Tortilla Roll Stuffed With Veg Kebab, Mint Mayo & Melted Mozzarella Cheese Goodness",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1186,7 +1228,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/indi-rockin-roll-non-veg.f1c8922068c1aeb205148cc11f245a92.1.jpg",
     desc: "Soft Tortilla Roll Stuffed With Chicken Tikka, Mint Mayo & Melted Mozzarella Cheese Goodness",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: true
   },
   {
@@ -1194,7 +1239,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/zesty-veg-pocket.ba790bc6fa8f27ea8e99e31c4edc7c48.1.jpg",
     desc: "Freshly Baked Pocket Stuffed With Flavourful Paneer, Veggies & Smoked Texas Garlic Sauce",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1202,7 +1250,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/zesty-chicken-pocket.dbe88abe1adeee1dc4d5bec7390327f0.1.jpg",
     desc: "Freshly Baked Pocket Stuffed With Chicken, Veggies & Smoked Texas Garlic Sauce",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: true
   },
   {
@@ -1210,7 +1261,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/jalapeno-poppers.0570e4206c04cedf358b656e0f47c664.1.jpg",
     desc: "Jalapeno Poppers With Gooey White Sauce",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1218,7 +1272,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/spicy-baked-chicken-wings-4pcs.0e022327c5ee3108c2e6fc3f89a76ff7.1.jpg",
     desc: "4 Pieces Of Spicy, Tender Chicken Wings",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: true
   },
   {
@@ -1226,7 +1283,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/spicy-baked-chicken-wings.47e2a22f9bc8064237dce3e0ce38a424.1.jpg",
     desc: "6 Pieces Of Spicy, Tender Chicken Wings",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1234,7 +1294,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/creamy-mushroom-pasta-single.cf2ea0b00c49b1c95e7d25601c503314.1.jpg",
     desc: "Pasta in rich creamy mushroom sauce flavoured with garlic & parsley",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1242,7 +1305,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/cheesy-comfort-veg-single.0873be18115a4db89e866f9fd0155af7.1.jpg",
     desc: "Cheesy Creamy Pasta Comfort Topped With Onion, Green Capsicum, Red Capsicum & Sweet Corn",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1250,7 +1316,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/cheesy-comfort-chicken-single.77df0c1539e9a9fd4db9259dcc6e153c.1.jpg",
     desc: "Cheesy Creamy Pasta Comfort Topped With Chicken Sausage, Onion, Green Capsicum & Red Capsicum",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: true
   },
   {
@@ -1258,7 +1327,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/spiced-tomato-twist-veg-single.1de34af95e344a32c49a94da430b5418.1.jpg",
     desc: "Tangy Flavourful Red Sauce Pasta Infused With Heavenly Herbs & Spices Topped With Onion, Green Capsicum & Red Capsicum",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1266,7 +1338,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/side/spiced-tomato-twist-chicken-pasta-single.4f1b13d88e1fdfafd275ac2d9db67bfa.1.jpg",
     desc: "Tangy Flavourful Red Sauce Pasta Infused With Heavenly Herbs & Spices Topped With Chicken Sausage",
     type: "Sides",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1274,7 +1349,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/dessert/choco-volcano-cake.f829dc6e30a07b83f232b4880395162f.1.jpg",
     desc: "Choco Delight With A Gooey Chocolate Volcano Centre",
     type: "Desserts",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1282,7 +1360,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/pepsi.ebd77460b7e104a70753241ad502abca.1.jpg",
     desc: "Contains Caffeine",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1290,7 +1371,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/pepsi-black.05bd5ce9c59d6fea34befe77a4c5bdee.1.jpg",
     desc: "Contains Caffeine",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1298,7 +1382,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/mirinda.b67f0e29703e70fd5dfe91f900dc0046.1.jpg",
     desc: "Contains Caffeine",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1306,7 +1393,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/7-up.15b00a4f5a8acd746ca6ae6f6e2d0330.1.jpg",
     desc: "Contains Caffeine",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1314,7 +1404,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/masala-lemonade.671f99d3f05e6a9bfa620046ac5168c4.1.jpg",
     desc: "Masala Lemonade",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1322,7 +1415,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/masala-pepsi.557d0a593755b9bbd8cde2da66fd2581.1.jpg",
     desc: "Masala Pepsi",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1330,7 +1426,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/masala-mirinda.3f89eae9de5cdc4aa6c2f91f61cd8611.1.jpg",
     desc: "Masala Mirinda",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1338,7 +1437,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/jamuntini-350ml.3f8790dc78399da2e37e9cf0020c4bff.1.jpg",
     desc: "Fresh Blast OfJamun With A Hint Of Refreshing Mint",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1346,7 +1448,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/pepsi-glass-350ml.1cf5171b7365952e64ee1fe39092f329.1.jpg",
     desc: "Contains Caffeine",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1354,7 +1459,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/pepsi-duos-combo-700ml.da5dfa583064c8ef572ae4bd9505b46d.1.jpg",
     desc: "Combo of 2 Pepsi Glasses",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1362,7 +1470,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/pepsi-family-combo-1400ml.52fe28b48cab69da97dbb79990d34b4b.1.jpg",
     desc: "Combo of 4 Pepsi Glasses",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1370,7 +1481,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/mirinda-glass-350ml.04ef933778eebd80bc403856f4765838.1.jpg",
     desc: "Contains Caffeine",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1378,7 +1492,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/mirinda-duos-combo-700ml.cb9d1c74dd03047e3e55a05e8dbdc0d8.1.jpg",
     desc: "Combo of 2 Mirinda Glasses",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1386,7 +1503,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/mirinda-family-combo-1400ml.1feb8a2dc5456c61d2a72a3ecf80421e.1.jpg",
     desc: "Combo of 4 Mirinda Glasses",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1394,7 +1514,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/7up-glass-350ml.a020a483561f8c95bca0de380e41c020.1.jpg",
     desc: "Contains Caffeine",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1402,7 +1525,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/7up-duos-combo-700ml.2ef2a5200d895c9d0240b40345f0bd78.1.jpg",
     desc: "Combo of 2 7up Glasses",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   },
   {
@@ -1410,7 +1536,10 @@ export const foodDataResource = [
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/drink/7up-family-combo-1400ml.9ce1c5348effcd21f160260ad86ea99d.1.jpg",
     desc: "Combo of 4 7up Glasses",
     type: "Drinks",
-    cost: 200,
+
+    quantity: 1,
+    UnitBilledCost: 200,
+
     nonVeg: false
   }
 ]
