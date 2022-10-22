@@ -12,7 +12,6 @@ const Desserts = () => {
       {/* <NavbarComp /> */}
 
       <div className='pageMcont'>
-
         <div className='pageCont'>
           {
             dessertsData.map((item, index) => {

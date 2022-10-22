@@ -42,11 +42,11 @@
   width: 100vw;
   height: 100vh;
 
-  padding-top: 40px;
+  padding-top: 50px;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .pageCont {
@@ -55,7 +55,7 @@
 
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
 
   flex-wrap: wrap;
 

@@ -21,6 +21,7 @@ const NavbarComp = () => {
   const navigate = useNavigate()
 
   const navigateHandler = (path) => {
+    setShowMenu(false)
     navigate(path)
   }
 
@@ -29,6 +30,7 @@ const NavbarComp = () => {
 
     let searchTermTmp = searchTerm
     setSearchTerm("")
+    setShowMenu(false)
     navigate(`/search?${searchTermTmp}`)
   }
 
@@ -62,7 +64,12 @@ const NavbarComp = () => {
           </form>
         </div>
 
-        <AiOutlineShoppingCart className='navbarCartIcon' />
+        <div className='navbarCartIconCont'>
+          <AiOutlineShoppingCart />
+          <span className='navbarCartNos'>3</span>
+        </div>
+
+
         <GiHamburgerMenu
           className='navbarBurgerIcon'
           onClick={() => setShowMenu(val => !val)}

@@ -108,17 +108,23 @@
   cursor: pointer;
 }
 
-.navbarCartIcon {
+.navbarCartIconCont {
   margin: 0;
   padding: 0;
 
   position: absolute;
-  top: 08px;
+  top: -2px;
   right: 90px;
 
   font-size: 1.5rem;
 
   cursor: pointer;
+
+  /* border: 1px solid black; */
+}
+
+.navbarCartNos {
+  font-size: 1.2rem;
 }
 
 .navbarBurgerIcon {

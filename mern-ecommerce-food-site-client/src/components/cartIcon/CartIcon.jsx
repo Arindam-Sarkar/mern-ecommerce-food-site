@@ -4,8 +4,10 @@ import { AiOutlineShoppingCart } from 'react-icons/ai'
 
 const CartIcon = () => {
   return (
-    <div>
+    <div className='cartIconMainCont'>
       < AiOutlineShoppingCart />
+
+      <span>2</span>
     </div>
   )
 }
