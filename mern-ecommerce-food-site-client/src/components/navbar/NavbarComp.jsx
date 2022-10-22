@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -6,16 +6,21 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
+import CartIcon from '../cartIcon/CartIcon'
+
+import { GiHamburgerMenu } from 'react-icons/gi'
 
 import './navbarComp.css'
+import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { RiUser3Line, RiSearchLine } from 'react-icons/ri'
 
 const NavbarComp = () => {
   const [searchTerm, setSearchTerm] = useState("")
+  const [showMenu, setShowMenu] = useState(false)
 
   const navigate = useNavigate()
 
   const navigateHandler = (path) => {
-    // setSearchTerm("")
     navigate(path)
   }
 
@@ -23,7 +28,6 @@ const NavbarComp = () => {
     e.preventDefault()
 
     let searchTermTmp = searchTerm
-    // console.log("searchTermTmp = ", searchTermTmp);
     setSearchTerm("")
     navigate(`/search?${searchTermTmp}`)
   }
@@ -31,51 +35,62 @@ const NavbarComp = () => {
   return (
     <>
       <div className='navbarMcomp'>
-        <Navbar bg="light" expand="lg">
+        <div className='navbarLinkListCont'>
 
-          <Container >
-            <Navbar.Brand href="#">Food Shop</Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbarScroll" />
-            <Navbar.Collapse id="navbarScroll">
-              <Nav
-                className="me-auto my-2 my-lg-0"
-                style={{ maxHeight: '150px' }}
-                navbarScroll>
+          <div className='navbarLogoCont'>
+            <img className='navbarLogoImage'
+              src="https://www.pizzahut.co.in/_next/static/static/images/logo.38f9109e24d22d58d048837b27f54390.png" alt="" />
+          </div>
 
-                <Nav.Link onClick={() => navigateHandler("/pizza")}>Pizzas</Nav.Link>
-                <Nav.Link onClick={() => navigateHandler("/sides")}>Sides</Nav.Link>
-                <Nav.Link onClick={() => navigateHandler("/desserts")}>Desserts</Nav.Link>
-                <Nav.Link onClick={() => navigateHandler("/drinks")}>Drinks</Nav.Link>
+          <ul className='navbarLinkContLarge'>
+            <li className='navbarLink' onClick={() => navigateHandler("/pizza")}>Pizzas</li>
+            <li className='navbarLink' onClick={() => navigateHandler("/sides")}>Sides</li>
+            <li className='navbarLink' onClick={() => navigateHandler("/desserts")}>Desserts</li>
+            <li className='navbarLink' onClick={() => navigateHandler("/drinks")}>Drinks</li>
+          </ul>
 
-                <Form className="d-flex mr"
-                  onSubmit={(e) => searchHandler(e)} >
+          <form className='navbarSearchCont'
+            onSubmit={(e) => searchHandler(e)}>
+            <input
+              className='navbarSearchContSearch'
+              type="search" name="search" id="search"
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            < RiSearchLine
+              onClick={(e) => searchHandler(e)}
+              className='navbarSearchIcon' />
+          </form>
+        </div>
 
-                  <input
-                    type="search"
-                    placeholder="Search"
-                    className="me-2"
-                    aria-label="Search"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                  />
+        <AiOutlineShoppingCart className='navbarCartIcon' />
+        <GiHamburgerMenu
+          className='navbarBurgerIcon'
+          onClick={() => setShowMenu(val => !val)}
+        />
+        <RiUser3Line className='navbarUserIcon' />
 
-                  <Button variant="outline-success"
-                    onClick={(e) => searchHandler(e)}
-                  >Search</Button>
-                </Form>
-              </Nav>
 
-              <li className=" nav-item pe-3">
-                <a href="" className="fas fa-shopping-bag">
-                  <span className="num rounded-circle">3</span>
-                </a>
-              </li>
+        {(showMenu === true) &&
+          <div className='navbarSideCont'>
+            <form className='navbarSearchContSmall'
+              onSubmit={(e) => searchHandler(e)}>
+              <input type="search" name="search" id="search"
+                onChange={(e) => setSearchTerm(e.target.value)} />
+              < RiSearchLine className='navbarSearchIcon'
+                onClick={(e) => searchHandler(e)} />
+            </form>
 
-            </Navbar.Collapse >
+            <ul className='navbarLinkContSmall'>
+              <li className='navbarLinkSmall' onClick={() => navigateHandler("/pizza")}>Pizzas</li>
+              <li className='navbarLinkSmall' onClick={() => navigateHandler("/sides")}>Sides</li>
+              <li className='navbarLinkSmall' onClick={() => navigateHandler("/desserts")}>Desserts</li>
+              <li className='navbarLinkSmall' onClick={() => navigateHandler("/drinks")}>Drinks</li>
+            </ul>
 
-          </Container >
+          </div>
 
-        </Navbar >
+
+        }
       </div >
     </>
 

@@ -12,7 +12,6 @@ const Pizza = () => {
     <>
       {/* <NavbarComp /> */}
       <div className='pageMcont'>
-
         <div className='pageCont'>
           {
             pizzaData.map((item, index) => {

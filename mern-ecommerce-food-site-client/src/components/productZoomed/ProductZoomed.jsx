@@ -2,20 +2,27 @@ import React, { useEffect } from 'react'
 import { MdOutlineCancel } from 'react-icons/md'
 import "./productZoomed.css"
 
-import { foodDataResource } from '../../foodData'
+import {
+  foodDataResource,
+  PIZZA_SIZE_SMALL,
+  PIZZA_SIZE_MEDIUM,
+  PIZZA_SIZE_LARGE
+} from '../../foodData'
+
 import { useState } from 'react'
 
-export const PIZZA_SIZE_SMALL = 0
-export const PIZZA_SIZE_MEDIUM = 1
-export const PIZZA_SIZE_LARGE = 2
+import { useSelector, useDispatch } from 'react-redux'
+import { addFoodItemData, removeFoodItemData } from '../../features/foodItem/foodItem'
 
 const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
   const [item, setItem] = useState(inputItem)
 
+  const dispatch = useDispatch()
+
 
   const ItemHandler = (type, field, value) => {
     let itemTmp = item;
-    console.log("type = ", type, "field =", field, "value = ", value)
+    // console.log("type = ", type, "field =", field, "value = ", value)
 
     if (type === "Pizzas") {
       if (field === "size") {
@@ -128,6 +135,16 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
 
   }
 
+  const addToCartHandler = (inputItem) => {
+    const itemId = Math.floor((Math.random() * 1000000000000) + 1)
+
+    // add a unique itemId, this id will be used to remove
+    // items from the redux cart if required
+    const itemNew = { itemId: itemId, ...inputItem }
+
+    dispatch(addFoodItemData(itemNew))
+  }
+
   // Set the pizza size to small , since radio button
   // does not work before clicked
   useEffect(() => {
@@ -233,10 +250,9 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
           </div>
         }
 
-        {
-          ((item.type === "Sides") ||
-            (item.type === "Desserts") ||
-            (item.type === "Drinks")) &&
+        {((item.type === "Sides") ||
+          (item.type === "Desserts") ||
+          (item.type === "Drinks")) &&
 
           <div className='ProductZoomedCustomiseMainCont'>
 
@@ -258,9 +274,14 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
               <div>Total : {(item.UnitBilledCost) * (item.quantity)}</div>
             </div>
           </div>
-
         }
 
+        <div className='ProductZoomedCheckoutButtonCont'>
+          <button
+            className='ProductZoomedCheckoutButton'
+            onClick={() => addToCartHandler(item)}
+          >Add To Cart</button>
+        </div>
       </div>
     </div >
 

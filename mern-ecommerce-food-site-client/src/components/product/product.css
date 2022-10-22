@@ -7,6 +7,7 @@
   align-items: center;
 }
 
+/* small devices */
 @media (max-width: 600px) {
   .productMCont {
     width: 99%;
