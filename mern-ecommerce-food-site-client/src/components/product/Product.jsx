@@ -28,7 +28,7 @@ const Product = ({ item }) => {
                   alt="" />
 
                 <h1 className='productH1'>{item?.name}</h1>
-                <div className='productP'>{item?.desc?.substring(0, 100)} ...</div>
+                <div className='productP'>{item?.desc?.substring(0, 150)} ...</div>
 
                 <button
                   onClick={() => showProductZoomHandler(true)}

@@ -1,13 +1,19 @@
 import React from 'react'
+import { useState } from 'react'
 import './signUp.css'
 
 const SignUp = () => {
+
+  const [regError, setRegError] = useState({ errPresent: false, errMsg: "" })
+
   return (
     <div className='signUpMCont'>
       <form className='signUpCont'>
 
-        <label htmlFor="email">Email <span className='signUpRequired'>*</span> </label>
-        <input type="email" name="email" id="email" required />
+        <div className='signUpTopMsg'>Fields marked '*' are compulsary</div>
+
+        <label htmlFor="userName">Username</label>
+        <input type="text" name="userName" id="userName" required />
 
         <label htmlFor="password">Password <span className='signUpRequired'>*</span></label>
         <input type="password" name="password" id="password" required />
@@ -27,12 +33,16 @@ const SignUp = () => {
         <label htmlFor="city">State <span className='signUpRequired'>*</span> </label>
         <input type="text" name="city" id="city" required />
 
+        <label htmlFor="email">Email <span className='signUpRequired'>*</span> </label>
+        <input type="email" name="email" id="email" required />
+
         <label htmlFor="phone">Phone Number<span className='signUpRequired'>*</span> </label>
         <input type="text" name="phone" id="phone" required />
 
         <div className='signUpbuttonCont'>
           <button className='signUpbutton'>Sign Up</button>
         </div>
+
         <div className='signUpAlreadyRegistered'>Already registered? Click Here to Login.</div>
       </form>
 
