@@ -1,46 +1,130 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import './signUp.css'
 
-const SignUp = () => {
+import axios from 'axios';
 
+let dummyData = {
+  username: "u4",
+  password: "u4",
+  passwordReEnter: "u4",
+  addressLine1: "flat no 1,123 street,",
+  addressLine2: "near main shop",
+  city: "city 1",
+  state: "state 1",
+  email: "u4@u4.com",
+  phone: "1223456789"
+}
+
+const SignUp = () => {
   const [regError, setRegError] = useState({ errPresent: false, errMsg: "" })
+  const [regData, setRegData] = useState({
+    username: "", password: "", passwordReEnter: "",
+    addressLine1: "", addressLine2: "",
+    city: "", state: "", email: "", phone: ""
+  })
+
+
+
+  const userSignUpHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      const resp = await axios.post("/user/register/", regData)
+      // Clear error message
+      setRegError({ errPresent: false, errMsg: "" })
+
+      if (resp.data?._id !== undefined) {
+
+
+        // Login Successful, put this user data in redux store
+
+      }
+    } catch (error) {
+      if (error.response.data.message?.match('E11000')) {
+        if ((error.response.data.message?.match('email_1 dup'))) {
+          setRegError({ errPresent: true, errMsg: "Error - Email already in use" })
+        } else if ((error.response.data.message?.match('phone_1 dup'))) {
+          setRegError({ errPresent: true, errMsg: "Error - Phone already in use" })
+        }
+        window.scrollTo(0, 0)
+      }
+    }
+  }
+
+
+  useEffect(() => {
+    setRegData(dummyData)
+  }, [])
+
 
   return (
     <div className='signUpMCont'>
-      <form className='signUpCont'>
+      <form className='signUpCont' onSubmit={(e) => userSignUpHandler(e)}>
 
         <div className='signUpTopMsg'>Fields marked '*' are compulsary</div>
 
+        {(regError.errPresent === true) &&
+          <div className='signUpTopMsg'>{regError.errMsg}</div>}
+
         <label htmlFor="userName">Username</label>
-        <input type="text" name="userName" id="userName" required />
+        <input
+          onChange={(e) => setRegData((prev) => ({ ...prev, username: e.target.value }))}
+          value={regData.username}
+          type="text" name="userName" id="userName" required />
 
         <label htmlFor="password">Password <span className='signUpRequired'>*</span></label>
-        <input type="password" name="password" id="password" required />
+        <input
+          onChange={(e) => setRegData((prev) => ({ ...prev, password: e.target.value }))}
+          value={regData.password}
+          type="password" name="password" id="password" required />
 
         <label htmlFor="passwordRe">Re-type Password <span className='signUpRequired'>*</span></label>
-        <input type="password" name="passwordRe" id="passwordRe" required />
+        <input
+          onChange={(e) => setRegData((prev) => ({ ...prev, passwordReEnter: e.target.value }))}
+          value={regData.passwordReEnter}
+          type="password" name="passwordRe" id="passwordRe" required />
 
         <label htmlFor="addressL1">Address Line 1 <span className='signUpRequired'>*</span> </label>
-        <input type="text" name="addressL1" id="addressL1" required />
+        <input
+          onChange={(e) => setRegData((prev) => ({ ...prev, addressLine1: e.target.value }))}
+          value={regData.addressLine1}
+          type="text" name="addressL1" id="addressL1" required />
 
         <label htmlFor="addressL2">Address Line 2  </label>
-        <input type="text" name="addressL2" id="addressL2" />
+        <input
+          onChange={(e) => setRegData((prev) => ({ ...prev, addressLine2: e.target.value }))}
+          value={regData.addressLine2}
+          type="text" name="addressL2" id="addressL2" />
 
         <label htmlFor="city">City <span className='signUpRequired'>*</span> </label>
-        <input type="text" name="city" id="city" required />
+        <input
+          onChange={(e) => setRegData((prev) => ({ ...prev, city: e.target.value }))}
+          value={regData.city}
+          type="text" name="city" id="city" required />
 
-        <label htmlFor="city">State <span className='signUpRequired'>*</span> </label>
-        <input type="text" name="city" id="city" required />
+        <label htmlFor="state">State <span className='signUpRequired'>*</span> </label>
+        <input
+          onChange={(e) => setRegData((prev) => ({ ...prev, state: e.target.value }))}
+          value={regData.state}
+          type="text" name="state" id="state" required />
 
         <label htmlFor="email">Email <span className='signUpRequired'>*</span> </label>
-        <input type="email" name="email" id="email" required />
+        <input
+          onChange={(e) => setRegData((prev) => ({ ...prev, email: e.target.value }))}
+          value={regData.email}
+          type="email" name="email" id="email" required />
 
         <label htmlFor="phone">Phone Number<span className='signUpRequired'>*</span> </label>
-        <input type="text" name="phone" id="phone" required />
+        <input
+          onChange={(e) => setRegData((prev) => ({ ...prev, phone: e.target.value }))}
+          value={regData.phone}
+          type="text" name="phone" id="phone" required />
 
         <div className='signUpbuttonCont'>
-          <button className='signUpbutton'>Sign Up</button>
+          <button
+            onClick={(e) => userSignUpHandler(e)}
+            className='signUpbutton'>Sign Up</button>
         </div>
 
         <div className='signUpAlreadyRegistered'>Already registered? Click Here to Login.</div>
