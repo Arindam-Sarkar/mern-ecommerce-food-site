@@ -1,0 +1,77 @@
+.loginMCont {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
+.loginCont {
+  width: 300px;
+  height: 50vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 10px;
+  /* border: 1px solid black; */
+}
+
+.loginCont>label {
+  align-self: flex-start;
+  margin-left: 10px;
+
+  font-size: 1.2rem;
+  color: #747474;
+
+  font-weight: bold;
+}
+
+.loginCont>input {
+  align-self: flex-start;
+  width: 300px;
+  height: 35px;
+
+  color: #747474;
+  background-color: #f8f9fa;
+
+  border: 0.2px solid black;
+  outline: hidden;
+}
+
+.loginCont>button {
+  position: absolute;
+  margin-top: 200px;
+
+  width: 150px;
+  height: 30px;
+
+  font-size: 1rem;
+  color: #747474;
+  background-color: #f8f9fa;
+
+  border-radius: 10px;
+  font-weight: bold;
+
+  z-index: -1;
+}
+
+.loginNewUser {
+  position: absolute;
+  margin-top: 300px;
+
+  width: 100vw;
+
+  font-size: 1.2rem;
+  color: #c80f2e;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+
+  z-index: -1;
+}

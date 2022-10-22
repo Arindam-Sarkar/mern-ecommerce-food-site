@@ -16,12 +16,13 @@ import { RiUser3Line, RiSearchLine } from 'react-icons/ri'
 
 const NavbarComp = () => {
   const [searchTerm, setSearchTerm] = useState("")
-  const [showMenu, setShowMenu] = useState(false)
+  const [showSideMenu, setShowSideMenu] = useState(false)
+  const [showUserMenu, setShowUserMenu] = useState(false)
 
   const navigate = useNavigate()
 
   const navigateHandler = (path) => {
-    setShowMenu(false)
+    setShowSideMenu(false)
     navigate(path)
   }
 
@@ -30,9 +31,13 @@ const NavbarComp = () => {
 
     let searchTermTmp = searchTerm
     setSearchTerm("")
-    setShowMenu(false)
+    setShowSideMenu(false)
     navigate(`/search?${searchTermTmp}`)
   }
+
+  // useEffect(() => {
+  //   console.log(showUserMenu)
+  // }, [showUserMenu])
 
   return (
     <>
@@ -72,13 +77,32 @@ const NavbarComp = () => {
 
         <GiHamburgerMenu
           className='navbarBurgerIcon'
-          onClick={() => setShowMenu(val => !val)}
-        />
-        <RiUser3Line className='navbarUserIcon' />
+          onClick={() => {
+            setShowUserMenu(false)
+            setShowSideMenu(val => !val)
+          }} />
 
 
-        {(showMenu === true) &&
+        {/* Only open user dropdown if side menu is off */}
+        <RiUser3Line
+          className='navbarUserIcon'
+          onClick={() => {
+            if (showSideMenu === false) {
+              setShowUserMenu(val => !val)
+            }
+          }} />
+
+
+        {((showUserMenu === true) &&
+          (showSideMenu === false)) &&
+          <div className='navbarUserMenuCont'>
+            <div className='navbarUserMenuItem'>Login</div>
+          </div>
+        }
+
+        {(showSideMenu === true) &&
           <div className='navbarSideCont'>
+
             <form className='navbarSearchContSmall'
               onSubmit={(e) => searchHandler(e)}>
               <input type="search" name="search" id="search"
