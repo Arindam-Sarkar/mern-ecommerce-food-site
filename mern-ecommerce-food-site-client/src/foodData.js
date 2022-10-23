@@ -4,32 +4,6 @@ export const PIZZA_SIZE_LARGE = 2
 
 export const foodDataResource = [
   {
-    name: "Margherita",
-    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/margherita.90f9451fd66871fb6f9cf7d506053f18.1.jpg",
-    desc: "Cheese",
-    type: "Pizzas",
-
-    quantity: 1,
-
-    size: PIZZA_SIZE_SMALL,
-    sizeCost: [200, 300, 400],
-    sizeBilledCost: 0,
-
-    extraCheese: false,
-    extraCheeseCost: [15, 30, 45],
-    extraCheeseBilledCost: 0,
-
-    extraVegetable: false,
-    extraVegetableCost: [20, 35, 50],
-    extraVegetableBilledCost: 0,
-
-    extraChicken: false,
-    extraChickenCost: [25, 40, 45],
-    extraChickenBilledCost: 0,
-
-    nonVeg: false,
-  },
-  {
     name: "Tandoori Paneer",
     imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/tandoori-paneer.4ef45717e972cf45b43c010e3cde5a22.1.jpg",
     desc: "Spiced paneer, Onion, Green Capsicum & Red Paprika in Tandoori Sauce",
@@ -184,6 +158,32 @@ export const foodDataResource = [
     extraChickenBilledCost: 0,
 
     nonVeg: true
+  },
+  {
+    name: "Margherita",
+    imageUrl: "https://api.pizzahut.io/v1/content/en-in/in-1/images/pizza/margherita.90f9451fd66871fb6f9cf7d506053f18.1.jpg",
+    desc: "Cheese",
+    type: "Pizzas",
+
+    quantity: 1,
+
+    size: PIZZA_SIZE_SMALL,
+    sizeCost: [200, 300, 400],
+    sizeBilledCost: 0,
+
+    extraCheese: false,
+    extraCheeseCost: [15, 30, 45],
+    extraCheeseBilledCost: 0,
+
+    extraVegetable: false,
+    extraVegetableCost: [20, 35, 50],
+    extraVegetableBilledCost: 0,
+
+    extraChicken: false,
+    extraChickenCost: [25, 40, 45],
+    extraChickenBilledCost: 0,
+
+    nonVeg: false,
   },
   {
     name: "Triple Chicken Feast",

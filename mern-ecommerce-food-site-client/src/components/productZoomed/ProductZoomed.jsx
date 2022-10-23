@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react'
 import { MdOutlineCancel } from 'react-icons/md'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import "./productZoomed.css"
 
 import {
@@ -135,8 +139,11 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
 
   }
 
+
   const addToCartHandler = (inputItem) => {
     const itemId = Math.floor((Math.random() * 1000000000000) + 1)
+
+    toast("Added To Cart")
 
     // add a unique itemId, this id will be used to remove
     // items from the redux cart if required
@@ -144,6 +151,8 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
 
     dispatch(addFoodItemData(itemNew))
   }
+
+
 
   // Set the pizza size to small , since radio button
   // does not work before clicked
@@ -283,6 +292,19 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
           >Add To Cart</button>
         </div>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={500}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover
+        theme="light"
+      />
     </div >
 
   )

@@ -1,7 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+const readLocalStorageDataArray = (storageName) => {
+  const arrayFromLocalStorage = localStorage.getItem(storageName)
+  if (arrayFromLocalStorage && arrayFromLocalStorage.length) {
+    return (JSON.parse(arrayFromLocalStorage))
+  } else {
+    return ([])
+  }
+}
+
 const initialState = {
-  foodItemData: []
+  foodItemData: readLocalStorageDataArray("foodItemData")
 }
 
 export const foodItemSlice = createSlice({
@@ -11,16 +20,25 @@ export const foodItemSlice = createSlice({
 
   reducers: {
     addFoodItemData: (state, action) => {
+      // Save new data in local storage
+      const foodItemDataTmp = readLocalStorageDataArray("foodItemData")
+      foodItemDataTmp.push(action.payload)
+      localStorage.removeItem("foodItemData")
+      localStorage.setItem("foodItemData", JSON.stringify(foodItemDataTmp))
+
+      // Save new data in redux state
       state.foodItemData.push(action.payload)
     },
+
     removeFoodItemData: (state, action) => {
+      // Save new data in local storage
+      const foodItemDatard = readLocalStorageDataArray("foodItemData")
+      const foodItemDataTmp = foodItemDatard.filter((item) => action.payload.itemId !== item.itemId)
+      localStorage.removeItem("foodItemData")
+      localStorage.setItem("foodItemData", JSON.stringify(foodItemDataTmp))
 
-
-      let foodItemDataTmp = state.foodItemData.filter((item) => {
-        return (item.itemId !== action.payload.itemId)
-      })
-
-      state.foodItemData += action.payload
+      // Save new data in redux state
+      state.foodItemData = [...foodItemDataTmp]
     }
   },
 })

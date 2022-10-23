@@ -1,28 +1,33 @@
 import React, { useEffect, useState } from 'react'
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
-import CartIcon from '../cartIcon/CartIcon'
-
+import { useNavigate } from 'react-router-dom';
 import { GiHamburgerMenu } from 'react-icons/gi'
-
-import './navbarComp.css'
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { RiUser3Line, RiSearchLine } from 'react-icons/ri'
+import { useSelector, useDispatch } from 'react-redux'
+import { addUserAuthData, removeUserAuthData } from '../../features/userAuth/userAuth'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import './navbarComp.css'
 
 const NavbarComp = () => {
   const [searchTerm, setSearchTerm] = useState("")
   const [showSideMenu, setShowSideMenu] = useState(false)
   const [showUserMenu, setShowUserMenu] = useState(false)
 
+  const userAuthData = useSelector((state) => state.userAuth.userAuthData)
+  const foodItemData = useSelector((state) => state.foodItem.foodItemData)
+
+
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const logoutToast = () => toast("Wow so easy!");
 
   const navigateHandler = (path) => {
     setShowSideMenu(false)
+    setShowUserMenu(false)
     navigate(path)
   }
 
@@ -32,12 +37,23 @@ const NavbarComp = () => {
     let searchTermTmp = searchTerm
     setSearchTerm("")
     setShowSideMenu(false)
+    setShowUserMenu(false)
     navigate(`/search?${searchTermTmp}`)
   }
 
+  const logoutHandler = (e) => {
+    e.preventDefault()
+
+    toast("Logout Successful")
+
+    setShowSideMenu(false)
+    setShowUserMenu(false)
+    dispatch(removeUserAuthData())
+  }
+
   // useEffect(() => {
-  //   console.log(showUserMenu)
-  // }, [showUserMenu])
+  //   console.log("foodItemData = ", foodItemData)
+  // }, [foodItemData])
 
   return (
     <>
@@ -71,9 +87,9 @@ const NavbarComp = () => {
 
         <div className='navbarCartIconCont'>
           <AiOutlineShoppingCart />
-          <span className='navbarCartNos'>3</span>
+          {(foodItemData?.length > 0) ?
+            (<span className='navbarCartNos'>{foodItemData.length}</span>) : (<></>)}
         </div>
-
 
         <GiHamburgerMenu
           className='navbarBurgerIcon'
@@ -81,7 +97,6 @@ const NavbarComp = () => {
             setShowUserMenu(false)
             setShowSideMenu(val => !val)
           }} />
-
 
         {/* Only open user dropdown if side menu is off */}
         <RiUser3Line
@@ -92,14 +107,32 @@ const NavbarComp = () => {
             }
           }} />
 
-
+        {/* top menu design */}
         {((showUserMenu === true) &&
-          (showSideMenu === false)) &&
-          <div className='navbarUserMenuCont'>
-            <div className='navbarUserMenuItem'>Login</div>
-          </div>
+          (showSideMenu === false)) ?
+          ((userAuthData?._id !== undefined) ?
+            (
+              < div className='navbarUserMenuCont'>
+                <div className='navbarUserMenuItem'>Account</div>
+                <div className='navbarUserMenuItem'
+                  onClick={(e) => logoutHandler(e)}>
+                  Logout
+                </div>
+              </div>
+            )
+            :
+            (
+              < div className='navbarUserMenuCont'>
+                <div className='navbarUserMenuItem'
+                  onClick={() => navigateHandler('/login')}>
+                  Login
+                </div>
+              </div>
+            )) :
+          (<></>)
         }
 
+        {/* Side Menu design */}
         {(showSideMenu === true) &&
           <div className='navbarSideCont'>
 
@@ -117,11 +150,22 @@ const NavbarComp = () => {
               <li className='navbarLinkSmall' onClick={() => navigateHandler("/desserts")}>Desserts</li>
               <li className='navbarLinkSmall' onClick={() => navigateHandler("/drinks")}>Drinks</li>
             </ul>
-
           </div>
 
-
         }
+
+        <ToastContainer
+          position="top-center"
+          autoClose={500}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable={false}
+          pauseOnHover
+          theme="light"
+        />
       </div >
     </>
 

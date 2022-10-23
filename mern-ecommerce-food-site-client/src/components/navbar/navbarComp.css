@@ -162,7 +162,7 @@
 .navbarUserMenuCont {
   position: absolute;
   top: 40px;
-  right: 30px;
+  right: 25px;
 
   width: 100px;
   padding-top: 10px;
@@ -175,6 +175,7 @@
   justify-content: center;
   align-items: center;
 
+  gap: 15px;
   border-radius: 5px;
 }
 
@@ -184,6 +185,8 @@
 
   font-size: 1.5rem;
   color: #747474;
+
+  /* border: 1px solid black; */
 }
 
 .navbarSideCont {

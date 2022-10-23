@@ -2,7 +2,15 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import './signUp.css'
 
+
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux'
+import { addUserAuthData, removeUserAuthData } from '../../features/userAuth/userAuth'
+import { useNavigate } from 'react-router-dom';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 let dummyData = {
   username: "u4",
@@ -24,6 +32,9 @@ const SignUp = () => {
     city: "", state: "", email: "", phone: ""
   })
 
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
 
 
   const userSignUpHandler = async (e) => {
@@ -35,17 +46,22 @@ const SignUp = () => {
       setRegError({ errPresent: false, errMsg: "" })
 
       if (resp.data?._id !== undefined) {
-
-
         // Login Successful, put this user data in redux store
+        dispatch(addUserAuthData(resp.data))
 
+        toast("Sign-Up Successful")
+
+        // Navigate to home page
+        navigate('/')
       }
     } catch (error) {
       if (error.response.data.message?.match('E11000')) {
         if ((error.response.data.message?.match('email_1 dup'))) {
           setRegError({ errPresent: true, errMsg: "Error - Email already in use" })
+          toast("Error - Email already in use")
         } else if ((error.response.data.message?.match('phone_1 dup'))) {
           setRegError({ errPresent: true, errMsg: "Error - Phone already in use" })
+          toast("Error - Phone number already in use")
         }
         window.scrollTo(0, 0)
       }
@@ -63,9 +79,6 @@ const SignUp = () => {
       <form className='signUpCont' onSubmit={(e) => userSignUpHandler(e)}>
 
         <div className='signUpTopMsg'>Fields marked '*' are compulsary</div>
-
-        {(regError.errPresent === true) &&
-          <div className='signUpTopMsg'>{regError.errMsg}</div>}
 
         <label htmlFor="userName">Username</label>
         <input
@@ -122,14 +135,27 @@ const SignUp = () => {
           type="text" name="phone" id="phone" required />
 
         <div className='signUpbuttonCont'>
-          <button
-            onClick={(e) => userSignUpHandler(e)}
-            className='signUpbutton'>Sign Up</button>
+          <button className='signUpbutton' type='submit'>Sign Up</button>
         </div>
 
-        <div className='signUpAlreadyRegistered'>Already registered? Click Here to Login.</div>
+        <div className='signUpAlreadyRegistered'
+          onClick={() => navigate('/login')}>
+          Already registered? Click Here to Login.
+        </div>
       </form>
 
+      <ToastContainer
+        position="top-center"
+        autoClose={500}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover
+        theme="light"
+      />
     </div>
   )
 }
