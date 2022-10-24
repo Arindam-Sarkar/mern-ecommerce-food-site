@@ -1,7 +1,6 @@
-:root {
-  --smallDeviceSize: 600px;
-}
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   margin: 0;
