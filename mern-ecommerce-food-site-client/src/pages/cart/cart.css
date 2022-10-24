@@ -1,22 +1,18 @@
 table {
   width: 100%;
-  height: 60%;
-  border: 1px solid black;
+  overflow-y: scroll;
 }
 
-thead tr {
-  border: 1px solid blue;
+
+.cartTableDataWithImage {
+  display: inline-block;
 }
 
-thead tr th {
-  border: 1px solid blue;
+.cartTableDataWithImage>img {
+  float: left;
 }
 
-tbody tr td {
-  border: 1px solid blue;
-}
-
-.th1 {
-  width: 50%;
-  text-align: center;
+.cartTableDataWithImage>div {
+  float: left;
+  vertical-align: bottom;
 }
