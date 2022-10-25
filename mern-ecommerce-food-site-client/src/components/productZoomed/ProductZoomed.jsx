@@ -20,8 +20,12 @@ import { addFoodItemData, removeFoodItemData, updateFoodItemData } from '../../f
 
 const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
   const [item, setItem] = useState(inputItem)
-
   const dispatch = useDispatch()
+  const [pizzaSmall, setPizzaSmall] = useState(false)
+  const [pizzaMedium, setPizzaMedium] = useState(false)
+  const [pizzaLarge, setPizzaLarge] = useState(false)
+
+
 
 
   const ItemHandler = (type, field, value) => {
@@ -140,7 +144,8 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
   }
 
 
-  const addToCartHandler = (inputItem) => {
+  const addToCartHandler = (input) => {
+    inputItem = input
     const itemId = Math.floor((Math.random() * 1000000000000) + 1)
 
     inputItem.extras = ""
@@ -183,8 +188,8 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
     dispatch(addFoodItemData(itemNew))
   }
 
-  const updateCartHandler = (inputItem) => {
-
+  const updateCartHandler = (input) => {
+    inputItem = input
 
     inputItem.extras = ""
 
@@ -233,13 +238,36 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
     dispatch(updateFoodItemData(itemNew))
   }
 
+  useEffect(() => {
+    if (item.type == "Pizzas") {
+      if (item.size === PIZZA_SIZE_SMALL) {
+        setPizzaSmall(true)
+        setPizzaMedium(false)
+        setPizzaLarge(false)
+      }
+      else if (item.size === PIZZA_SIZE_MEDIUM) {
+        setPizzaSmall(false)
+        setPizzaMedium(true)
+        setPizzaLarge(false)
+      }
+      else if (item.size === PIZZA_SIZE_LARGE) {
+        setPizzaSmall(false)
+        setPizzaMedium(false)
+        setPizzaLarge(true)
+      }
+    }
+
+    console.log("item.size  =  ", item.size);
+  }, [item])
+
+
   // Set the pizza size to small , since radio button
   // does not work before clicked
-  useEffect(() => {
-    if (item.type === "Pizzas") {
-      ItemHandler("Pizzas", "size", PIZZA_SIZE_SMALL)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (item.type === "Pizzas") {
+  //     ItemHandler("Pizzas", "size", PIZZA_SIZE_SMALL)
+  //   }
+  // }, [])
 
   return (
     <div className='pZMCont'>
@@ -266,19 +294,22 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
                 <div className='pZSizeRadioButtonICont'>
                   <div className='pZSizeRadioButton'>
                     <input
-                      onClick={() => ItemHandler("Pizzas", "size", PIZZA_SIZE_SMALL)}
-                      type="radio" id="small" name="size" defaultChecked />
+                      checked={pizzaSmall}
+                      onChange={() => ItemHandler("Pizzas", "size", PIZZA_SIZE_SMALL)}
+                      type="radio" id="small" name="size" />
                     <label htmlFor="small">Small</label>
                   </div>
                   <div className='pZSizeRadioButton'>
                     <input
-                      onClick={() => ItemHandler("Pizzas", "size", PIZZA_SIZE_MEDIUM)}
+                      checked={pizzaMedium}
+                      onChange={() => ItemHandler("Pizzas", "size", PIZZA_SIZE_MEDIUM)}
                       type="radio" id="medium" name="size" />
                     <label htmlFor="medium">Medium</label>
                   </div>
                   <div className='pZSizeRadioButton'>
                     <input
-                      onClick={() => ItemHandler("Pizzas", "size", PIZZA_SIZE_LARGE)}
+                      checked={pizzaLarge}
+                      onChange={() => ItemHandler("Pizzas", "size", PIZZA_SIZE_LARGE)}
                       type="radio" id="large" name="size" />
                     <label htmlFor="large">Large</label>
                   </div>
@@ -288,6 +319,7 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
               <div className='pZExtraCheeseCont'>
                 <label htmlFor="extraCeese">Extra Cheese</label>
                 <input
+                  checked={item.extraCheese}
                   onChange={(e) => ItemHandler("Pizzas", "extraCeese", e.target.checked)}
                   type="checkbox" name="extraCeese" id="extraCeese" />
               </div>
@@ -295,6 +327,7 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
               <div className='pZExtraVegetableCont'>
                 <label htmlFor="extraVegetables">Extra Vegetable</label>
                 <input
+                  checked={item.extraVegetable}
                   onChange={(e) => ItemHandler("Pizzas", "extraVegetables", e.target.checked)}
                   type="checkbox" name="extraVegetables" id="extraVegetables" />
               </div>
@@ -303,6 +336,7 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
                 <div className='pZExtraChickenCont'>
                   <label htmlFor="extraChicken">Extra Chicken</label>
                   <input
+                    checked={item.extraChicken}
                     onChange={(e) => ItemHandler("Pizzas", "extraChicken", e.target.checked)}
                     type="checkbox" name="extraChicken" id="extraChicken" />
                 </div>}
@@ -311,6 +345,7 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
                 <label htmlFor="quantity">Choose quantity</label>
 
                 <select
+                  value={item.quantity}
                   onChange={(e) => ItemHandler("Pizzas", "quantity", e.target.value)}
                   name="quantity" id="carquantitys">
                   <option value="1">1</option><option value="2">2</option>

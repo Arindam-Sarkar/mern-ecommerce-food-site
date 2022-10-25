@@ -209,8 +209,6 @@ const Cart = () => {
                         </div>
                       </td>
 
-                      {/* const [deleteItem, setDeleteItem] = useState({ showDelete: false, item: {} }) */}
-
                       <td className=" ">{item?.quantity}</td>
                       <td className=" ">{calculateItemAmount(item)}</td>
                       <td className="cTBin">
