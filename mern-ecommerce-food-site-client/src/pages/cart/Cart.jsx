@@ -23,6 +23,7 @@ import {
   PIZZA_SIZE_MEDIUM,
   PIZZA_SIZE_LARGE
 } from '../../foodData';
+import ProductZoomed from '../../components/productZoomed/ProductZoomed';
 
 // background-color: #f8f9fa;
 // color: #747474;
@@ -36,8 +37,6 @@ const Cart = () => {
   const userAuthData = useSelector((state) => state.userAuth.userAuthData)
   const foodItemData = useSelector((state) => state.foodItem.foodItemData)
 
-
-
   const [completeOrder, setCompleteOrder] = useState({
     userId: "",
 
@@ -49,12 +48,23 @@ const Cart = () => {
     orderItems: []
   })
 
+  const [showProductZoomed, setShowProductZoomed] = useState(false)
+  const [itemToEdit, setItemToEdit] = useState({})
+
+  const updateItemHandler = (item) => {
+    setItemToEdit(item)
+    setShowProductZoomed(true)
+  }
+
+  const showProductZoomHandler = (input) => {
+    setShowProductZoomed(input)
+  }
+
+
+
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  // useEffect(() => {
-  //   console.log(foodItemData)
-  // }, [foodItemData])
-
 
   const checkoutHandler = (orderItemData, orderUserData) => {
     const orderId = Math.floor((Math.random() * 1000000000000) + 1)
@@ -140,6 +150,11 @@ const Cart = () => {
       <div className='pageMcont'>
         <div className='pageCont'>
 
+          {showProductZoomed &&
+            < ProductZoomed
+              showProductZoomHandler={showProductZoomHandler}
+              inputItem={itemToEdit} />}
+
           {(deleteItem.showDelete === true) &&
             <>
               <div className='cDeleteBox'>
@@ -187,7 +202,8 @@ const Cart = () => {
                           <div className='ctTd1ImgDetails'>
                             <h4 className="">{item?.name} </h4>
                             <div >{item?.extras} </div>
-                            <button>Edit Order</button>
+                            <button onClick={() => updateItemHandler(item)}
+                            >Edit Order</button>
                           </div>
 
                         </div>

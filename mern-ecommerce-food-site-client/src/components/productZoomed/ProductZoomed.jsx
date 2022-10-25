@@ -16,7 +16,7 @@ import {
 import { useState } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { addFoodItemData, removeFoodItemData } from '../../features/foodItem/foodItem'
+import { addFoodItemData, removeFoodItemData, updateFoodItemData } from '../../features/foodItem/foodItem'
 
 const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
   const [item, setItem] = useState(inputItem)
@@ -183,7 +183,55 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
     dispatch(addFoodItemData(itemNew))
   }
 
+  const updateCartHandler = (inputItem) => {
 
+
+    inputItem.extras = ""
+
+    // Make extras string for products like Pizzas
+    if (inputItem.type == "Pizzas") {
+      // For Pizza Size
+      if (inputItem.size === PIZZA_SIZE_SMALL) {
+        inputItem.extras += "Size Small,"
+      }
+      else if (inputItem.size === PIZZA_SIZE_MEDIUM) {
+        inputItem.extras += "Size Medium,"
+      }
+      else if (inputItem.size === PIZZA_SIZE_LARGE) {
+        inputItem.extras += "Size Large,"
+      }
+
+      // For Extra Chees
+      if (inputItem.extraCheese === true) {
+        inputItem.extras += "Extra Cheese,"
+      }
+
+      // For Extra Vegetables
+      if (inputItem.extraVegetable === true) {
+        inputItem.extras += "Extra Vegetables,"
+      }
+
+      // For Extra Chicken
+      if (inputItem.extraChicken === true) {
+        inputItem.extras += "Extra Chicken"
+      }
+    }
+
+    toast("Cart Updated")
+
+    // add a unique itemId, this id will be used to remove
+    // items from the redux cart if required
+    const itemNew = { ...inputItem }
+
+    // // Remove the old item, since the id is the same
+    // dispatch(removeFoodItemData(itemNew))
+
+
+    // // add new food item to the redux store
+    // dispatch(addFoodItemData(itemNew))
+
+    dispatch(updateFoodItemData(itemNew))
+  }
 
   // Set the pizza size to small , since radio button
   // does not work before clicked
@@ -317,10 +365,17 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
         }
 
         <div className='ProductZoomedCheckoutButtonCont'>
-          <button
-            className='ProductZoomedCheckoutButton'
-            onClick={() => addToCartHandler(item)}
-          >Add To Cart</button>
+          {((item.itemId === null) || (item.itemId === undefined)) ?
+            (
+              <button
+                className='ProductZoomedCheckoutButton'
+                onClick={() => addToCartHandler(item)}>Add To Cart</button>
+            ) :
+            (
+              <button
+                className='ProductZoomedCheckoutButton'
+                onClick={() => updateCartHandler(item)}>Update Cart</button>
+            )}
         </div>
       </div>
 

@@ -42,6 +42,27 @@ export const foodItemSlice = createSlice({
       state.foodItemData = [...foodItemDataTmp]
     },
 
+    updateFoodItemData: (state, action) => {
+      // Save new data in local storage
+      const foodItemDatard = readLocalStorageDataArray("foodItemData")
+      // const foodItemDataTmp = foodItemDatard.filter((item) => action.payload.itemId !== item.itemId)
+
+      const foodItemDataTmp = foodItemDatard.map((item) => {
+        if (action.payload.itemId === item.itemId) {
+          return (action.payload)
+        }
+        else {
+          return item
+        }
+      })
+
+      localStorage.removeItem("foodItemData")
+      localStorage.setItem("foodItemData", JSON.stringify(foodItemDataTmp))
+
+      // Save new data in redux state
+      state.foodItemData = [...foodItemDataTmp]
+    },
+
     removeAllFoodItemData: (state, action) => {
       // Remove from local storage
       localStorage.removeItem("foodItemData")
@@ -69,7 +90,7 @@ export const foodItemSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addFoodItemData, removeFoodItemData, removeAllFoodItemData,
-  addOrderItemData, removeOrderItemData } = foodItemSlice.actions
+export const { addFoodItemData, removeFoodItemData, updateFoodItemData,
+  removeAllFoodItemData, addOrderItemData, removeOrderItemData } = foodItemSlice.actions
 
 export default foodItemSlice.reducer
