@@ -85,7 +85,9 @@ const NavbarComp = () => {
           </form>
         </div>
 
-        <div className='navbarCartIconCont'>
+        <div
+          onClick={() => navigateHandler('/cart')}
+          className='navbarCartIconCont'>
           <AiOutlineShoppingCart />
           {(foodItemData?.length > 0) ?
             (<span className='navbarCartNos'>{foodItemData.length}</span>) : (<></>)}

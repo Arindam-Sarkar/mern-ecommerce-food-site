@@ -6,9 +6,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { useSelector, useDispatch } from 'react-redux'
-import { addFoodItemData, removeFoodItemData } from '../../features/foodItem/foodItem'
+import {
+  addFoodItemData, removeFoodItemData,
+  addOrderItemData, removeOrderItemData
+} from '../../features/foodItem/foodItem'
 import { addUserAuthData, removeUserAuthData } from '../../features/userAuth/userAuth'
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 import {
   foodDataResource,
@@ -17,25 +22,92 @@ import {
   PIZZA_SIZE_LARGE
 } from '../../foodData';
 
+// background-color: #f8f9fa;
+// color: #747474;
 
 const Cart = () => {
   const userAuthData = useSelector((state) => state.userAuth.userAuthData)
   const foodItemData = useSelector((state) => state.foodItem.foodItemData)
+  const [splIns, setSplIns] = useState("")
 
 
-  useEffect(() => {
-    console.log(foodItemData)
-  }, [foodItemData])
+  const [completeOrder, setCompleteOrder] = useState({
+    userId: "",
+
+    orderId: "",
+    orderAmount: "",
+    orderDate: "",
+    orderTime: "",
+    orderSpecialInstructions: "",
+    orderItems: []
+  })
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  // useEffect(() => {
+  //   console.log(foodItemData)
+  // }, [foodItemData])
 
 
+  const checkoutHandler = (orderItemData, orderUserData) => {
+    const orderId = Math.floor((Math.random() * 1000000000000) + 1)
+
+    const today = new Date();
+    const yyyy = today.getFullYear();
+    let mm = today.getMonth() + 1;
+    let dd = today.getDate();
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+
+    let formattedDate = dd + '/' + mm + '/' + yyyy;
+    let formattedTime = today.toLocaleTimeString();
+
+    const completeOrderTmp = {
+      userId: orderUserData._id,
+
+      orderId: orderId,
+      orderAmount: calculateTotalAmount(orderItemData),
+      orderDate: formattedDate,
+      orderTime: formattedTime,
+      orderSpecialInstructions: splIns,
+      orderItems: new Array(...orderItemData)
+    }
+
+    // console.log("orderItemData =", orderItemData)
+    // console.log("orderUserData =", orderUserData)
+
+    console.log("completeOrderTmp =", completeOrderTmp);
+
+    dispatch(removeOrderItemData())
+    dispatch(addOrderItemData(completeOrderTmp))
+    navigate('/payment')
+  }
 
 
+  const calculateTotalAmount = (orderItemData) => {
+    let totalItems = orderItemData.length
+    let totalAmount = 0
 
-  const renderFoodDetails = (item) => {
-    let returnString = ""
+    orderItemData.map((item) => {
+      if (item.type === "Pizzas") {
+        totalAmount += calculateItemAmount(item)
+      } else {
+        totalAmount += calculateItemAmount(item)
+      }
+    })
+    // console.log("totalAmount = ", totalAmount);
+    return (totalAmount)
+  }
 
-
-
+  const calculateItemAmount = (item) => {
+    if (item.type === "Pizzas") {
+      return ((item.sizeBilledCost +
+        item.extraCheeseBilledCost +
+        item.extraVegetableBilledCost +
+        item.extraChickenBilledCost) * item.quantity)
+    } else {
+      return ((item.UnitBilledCost) * (item.quantity))
+    }
   }
 
   return (
@@ -71,36 +143,43 @@ const Cart = () => {
                           <div className='ctTd1ImgDetails'>
                             <h4 className="">{item?.name} </h4>
                             <div >{item?.extras} </div>
+                            <button>Edit Order</button>
                           </div>
 
                         </div>
                       </td>
 
                       <td className=" ">{item?.quantity}</td>
-                      <td className=" ">$43.90</td>
+                      <td className=" ">{calculateItemAmount(item)}</td>
                       <td className="cTBin"><IoTrashOutline /></td>
                     </tr>
-
                   ))
-
                 }
 
+                <tr>
+                  <td colSpan={2}>
+                    Total :
+                  </td>
+                  <td colSpan={2}>{calculateTotalAmount(foodItemData)}</td>
+                </tr>
+
+
+                <tr>
+                  <td colSpan={3}>
+                    <textarea
+                      className="form-control"
+                      placeholder="Special Instructions"
+                      onChange={(e) => setSplIns(e.target.value)}
+                    >
+                    </textarea>
+                  </td>
+                  <td>
+                    <button onClick={() => checkoutHandler(foodItemData, userAuthData)}>Checkout</button>
+                  </td>
+                </tr>
               </tbody>
-
-
-
-
-
-
             </table>
-
-
           </div>
-
-
-
-
-
 
         </div>
       </div>
@@ -114,32 +193,6 @@ const Cart = () => {
 export default Cart
 
 
-// {/* {
-//                               (item?.type === "Pizzas") ?
-//                                 (
-//                                   ((item?.size === PIZZA_SIZE_SMALL) ?
-//                                     (<div ><em>Size:</em> Small</div>) : (
-//                                       ((item?.size === PIZZA_SIZE_MEDIUM) ?
-//                                         (<div ><em>Size:</em> Medium</div>) :
-//                                         ((item?.size === PIZZA_SIZE_LARGE) ?
-//                                           (<div ><em>Size:</em> Large</div>) :
-//                                           (<></>)))))
-
-//                                   // (((item?.extraCheese === true) && (
-//                                   //   <div ><em>Extra Cheese</em></div>
-//                                   // )))
-//                                 ) : (<></>)
-//                             } */}
 
 
-  // < div className = "shopping-cart-footer" >
-  //           <div className="column">
-  //             <form className="coupon-form" method="post">
-  //               <input className="form-control form-control-sm" type="text" placeholder="Coupon code" required="" />
-  //               <button className="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
-  //             </form>
-  //             <textarea className="form-control " placeholder="Special Instructions"></textarea>
-  //           </div>
 
-  //           <div className="column text-lg">Subtotal: <span className="text-medium">$289.68</span></div>
-  //         </div > 

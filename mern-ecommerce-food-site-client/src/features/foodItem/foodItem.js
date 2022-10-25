@@ -10,7 +10,8 @@ const readLocalStorageDataArray = (storageName) => {
 }
 
 const initialState = {
-  foodItemData: readLocalStorageDataArray("foodItemData")
+  foodItemData: readLocalStorageDataArray("foodItemData"),
+  orderItemData: JSON.parse(localStorage.getItem("orderItemData")) || null
 }
 
 export const foodItemSlice = createSlice({
@@ -39,11 +40,28 @@ export const foodItemSlice = createSlice({
 
       // Save new data in redux state
       state.foodItemData = [...foodItemDataTmp]
-    }
+    },
+
+    addOrderItemData: (state, action) => {
+      // Save new data in local storage
+      localStorage.removeItem("orderItemData")
+      localStorage.setItem("orderItemData", JSON.stringify(action.payload))
+
+      // Save new data in redux state
+      state.orderItemData = action.payload
+    },
+
+    removeOrderItemData: (state, action) => {
+      // Remove local storage
+      localStorage.removeItem("orderItemData")
+      // Save new data in redux state
+      state.orderItemData = {}
+    },
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addFoodItemData, removeFoodItemData } = foodItemSlice.actions
+export const { addFoodItemData, removeFoodItemData,
+  addOrderItemData, removeOrderItemData } = foodItemSlice.actions
 
 export default foodItemSlice.reducer
