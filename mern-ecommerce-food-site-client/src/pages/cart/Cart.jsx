@@ -5,9 +5,11 @@ import { IoTrashOutline } from 'react-icons/io5'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import DeleteItem from '../../components/deleteItem/DeleteItem';
+
 import { useSelector, useDispatch } from 'react-redux'
 import {
-  addFoodItemData, removeFoodItemData,
+  addFoodItemData, removeFoodItemData, removeAllFoodItemData,
   addOrderItemData, removeOrderItemData
 } from '../../features/foodItem/foodItem'
 import { addUserAuthData, removeUserAuthData } from '../../features/userAuth/userAuth'
@@ -26,9 +28,14 @@ import {
 // color: #747474;
 
 const Cart = () => {
+  const [splIns, setSplIns] = useState("")
+  const [deleteItem, setDeleteItem] = useState({ showDelete: false, item: {} })
+
+  const [emptyCart, setEmptyCart] = useState(false)
+
   const userAuthData = useSelector((state) => state.userAuth.userAuthData)
   const foodItemData = useSelector((state) => state.foodItem.foodItemData)
-  const [splIns, setSplIns] = useState("")
+
 
 
   const [completeOrder, setCompleteOrder] = useState({
@@ -78,8 +85,11 @@ const Cart = () => {
 
     console.log("completeOrderTmp =", completeOrderTmp);
 
+    // put this data in the redus store
     dispatch(removeOrderItemData())
     dispatch(addOrderItemData(completeOrderTmp))
+
+    // move on to the payment page
     navigate('/payment')
   }
 
@@ -110,11 +120,43 @@ const Cart = () => {
     }
   }
 
+  const deleteItemHandler = (item) => {
+    dispatch(removeFoodItemData(item))
+    console.log("item =", item);
+    setDeleteItem({ showDelete: false, item: {} })
+
+    toast("Item Deleted")
+  }
+
+  const emptyCartHandler = () => {
+    dispatch(removeOrderItemData())
+    dispatch(removeAllFoodItemData())
+    setEmptyCart(false)
+    toast("Cart Emptied")
+  }
+
   return (
     <>
       <div className='pageMcont'>
         <div className='pageCont'>
 
+          {(deleteItem.showDelete === true) &&
+            <>
+              <div className='cDeleteBox'>
+                <button onClick={() => deleteItemHandler(deleteItem.item)}>Yes</button>
+                <button onClick={() => setDeleteItem({ showDelete: false, item: {} })}>No</button>
+              </div>
+            </>}
+
+          {(emptyCart === true) &&
+            <>
+              <div className='cDeleteBox'>
+                <button onClick={() => emptyCartHandler()}>Yes</button>
+                <button onClick={() => setEmptyCart(false)}>No</button>
+              </div>
+            </>}
+
+          {/* <DeleteItem item={deleteItem.item}/> */}
 
           <div className='wrapper container'>
             <table className="">
@@ -123,7 +165,9 @@ const Cart = () => {
                   <th className='CTth1'>Product Name</th>
                   <th className='CTth2'>Quantity</th>
                   <th className='CTth2'>Subtotal</th>
-                  <th className='CTth2'><button>Empty Cart</button></th>
+                  <th className='CTth2'>
+                    <button onClick={() => setEmptyCart(true)}>Empty Cart</button>
+                  </th>
                 </tr>
               </thead>
 
@@ -149,9 +193,15 @@ const Cart = () => {
                         </div>
                       </td>
 
+                      {/* const [deleteItem, setDeleteItem] = useState({ showDelete: false, item: {} }) */}
+
                       <td className=" ">{item?.quantity}</td>
                       <td className=" ">{calculateItemAmount(item)}</td>
-                      <td className="cTBin"><IoTrashOutline /></td>
+                      <td className="cTBin">
+                        <IoTrashOutline
+                          className='ctLogoTrash'
+                          onClick={() => setDeleteItem({ showDelete: true, item: item })} />
+                      </td>
                     </tr>
                   ))
                 }
@@ -181,6 +231,19 @@ const Cart = () => {
             </table>
           </div>
 
+
+          <ToastContainer
+            position="top-center"
+            autoClose={500}
+            hideProgressBar
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable={false}
+            pauseOnHover
+            theme="light"
+          />
         </div>
       </div>
 

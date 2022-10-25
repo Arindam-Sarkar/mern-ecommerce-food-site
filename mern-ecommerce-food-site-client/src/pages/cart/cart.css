@@ -90,3 +90,32 @@ table tbody {
   align-items: flex-start;
   gap: 5px;
 }
+
+.cDeleteBox {
+  position: absolute;
+
+  top: 20vh;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  width: 40%;
+  height: 90px;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  justify-self: center;
+
+  border-radius: 15px;
+
+  border: 1px solid var(--borderColorVar);
+  background-color: var(--backgroundColorVar);
+
+}
+
+.ctLogoTrash {
+  cursor: pointer;
+  font-size: 2rem;
+}

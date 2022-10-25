@@ -42,6 +42,14 @@ export const foodItemSlice = createSlice({
       state.foodItemData = [...foodItemDataTmp]
     },
 
+    removeAllFoodItemData: (state, action) => {
+      // Remove from local storage
+      localStorage.removeItem("foodItemData")
+
+      // Save new data in redux state
+      state.foodItemData = []
+    },
+
     addOrderItemData: (state, action) => {
       // Save new data in local storage
       localStorage.removeItem("orderItemData")
@@ -61,7 +69,7 @@ export const foodItemSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addFoodItemData, removeFoodItemData,
+export const { addFoodItemData, removeFoodItemData, removeAllFoodItemData,
   addOrderItemData, removeOrderItemData } = foodItemSlice.actions
 
 export default foodItemSlice.reducer
