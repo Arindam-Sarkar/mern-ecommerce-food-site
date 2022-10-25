@@ -263,11 +263,13 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
 
   // Set the pizza size to small , since radio button
   // does not work before clicked
-  // useEffect(() => {
-  //   if (item.type === "Pizzas") {
-  //     ItemHandler("Pizzas", "size", PIZZA_SIZE_SMALL)
-  //   }
-  // }, [])
+  useEffect(() => {
+    if ((item.itemId === null) || (item.itemId === undefined)) {
+      if (item.type === "Pizzas") {
+        ItemHandler("Pizzas", "size", PIZZA_SIZE_SMALL)
+      }
+    }
+  }, [])
 
   return (
     <div className='pZMCont'>
@@ -348,9 +350,11 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
                   value={item.quantity}
                   onChange={(e) => ItemHandler("Pizzas", "quantity", e.target.value)}
                   name="quantity" id="carquantitys">
-                  <option value="1">1</option><option value="2">2</option>
-                  <option value="3">3</option><option value="4">4</option>
-                  <option value="4">5</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
               </div>
             </div>
