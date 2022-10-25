@@ -1,71 +1,105 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './cart.css'
+import { IoTrashOutline } from 'react-icons/io5'
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { useSelector, useDispatch } from 'react-redux'
+import { addFoodItemData, removeFoodItemData } from '../../features/foodItem/foodItem'
+import { addUserAuthData, removeUserAuthData } from '../../features/userAuth/userAuth'
+import { useState } from 'react';
+
+import {
+  foodDataResource,
+  PIZZA_SIZE_SMALL,
+  PIZZA_SIZE_MEDIUM,
+  PIZZA_SIZE_LARGE
+} from '../../foodData';
+
 
 const Cart = () => {
+  const userAuthData = useSelector((state) => state.userAuth.userAuthData)
+  const foodItemData = useSelector((state) => state.foodItem.foodItemData)
+
+
+  useEffect(() => {
+    console.log(foodItemData)
+  }, [foodItemData])
+
+
+
+
+
+  const renderFoodDetails = (item) => {
+    let returnString = ""
+
+
+
+  }
+
   return (
     <>
       <div className='pageMcont'>
         <div className='pageCont'>
 
 
-          <table className="">
-            <thead>
-              <tr>
-                <th>Product Name</th>
-                <th className="">Quantity</th>
-                <th className="">Subtotal</th>
-                <th className="">Discount</th>
-                <th className=""><button>Empty Cart</button></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>
-                  <div className="cartTableDataWithImage">
-                    <img src="https://via.placeholder.com/220x180/FF0000/000000" alt="Product" />
-                    <div className="">
-                      <h4 className="">Unionbay Park</h4><span><em>Size:</em> 10.5</span><span><em>Color:</em> Dark Blue</span>
-                    </div>
-                  </div>
-                </td>
-
-                <td className="">
-                  <div className="">
-                    <select className="">
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                    </select>
-                  </div>
-                </td>
-                <td className=" ">$43.90</td>
-                <td className=" ">$18.00</td>
-                <td className=""></td>
-              </tr>
-
-            </tbody>
-          </table>
+          <div className='wrapper container'>
+            <table className="">
+              <thead>
+                <tr>
+                  <th className='CTth1'>Product Name</th>
+                  <th className='CTth2'>Quantity</th>
+                  <th className='CTth2'>Subtotal</th>
+                  <th className='CTth2'><button>Empty Cart</button></th>
+                </tr>
+              </thead>
 
 
+              <tbody>
+                {
+                  foodItemData?.map((item, index) => (
+                    <tr key={index}>
+                      <td >
+                        <div className="cTCont">
+                          <img
+                            className='ctTd1Img'
+                            src={`${item?.imageUrl}?width=251`}
+                            alt="Photo"
+                          />
 
-          {/* <div className="shopping-cart-footer">
-              <div className="column">
-                <form className="coupon-form" method="post">
-                  <input className="form-control form-control-sm" type="text" placeholder="Coupon code" required="" />
-                  <button className="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
-                </form>
-                <textarea className="form-control " placeholder="Special Instructions"></textarea>
-              </div>
+                          <div className='ctTd1ImgDetails'>
+                            <h4 className="">{item?.name} </h4>
+                            <div >{item?.extras} </div>
+                          </div>
 
-              <div className="column text-lg">Subtotal: <span className="text-medium">$289.68</span></div>
-            </div> */}
-          {/* <div className="shopping-cart-footer">
-              <div className="column"><a className="btn btn-outline-secondary" href="#"><i className="icon-arrow-left"></i>&nbsp;Back to Shopping</a></div>
-              <div className="column"><a className="btn btn-primary" href="#" data-toast="" data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Your cart" data-toast-message="is updated successfully!">Update Cart</a><a className="btn btn-success" href="#">Checkout</a></div>
-            </div> */}
+                        </div>
+                      </td>
+
+                      <td className=" ">{item?.quantity}</td>
+                      <td className=" ">$43.90</td>
+                      <td className="cTBin"><IoTrashOutline /></td>
+                    </tr>
+
+                  ))
+
+                }
+
+              </tbody>
+
+
+
+
+
+
+            </table>
+
+
+          </div>
+
+
+
+
 
 
         </div>
@@ -78,3 +112,34 @@ const Cart = () => {
 }
 
 export default Cart
+
+
+// {/* {
+//                               (item?.type === "Pizzas") ?
+//                                 (
+//                                   ((item?.size === PIZZA_SIZE_SMALL) ?
+//                                     (<div ><em>Size:</em> Small</div>) : (
+//                                       ((item?.size === PIZZA_SIZE_MEDIUM) ?
+//                                         (<div ><em>Size:</em> Medium</div>) :
+//                                         ((item?.size === PIZZA_SIZE_LARGE) ?
+//                                           (<div ><em>Size:</em> Large</div>) :
+//                                           (<></>)))))
+
+//                                   // (((item?.extraCheese === true) && (
+//                                   //   <div ><em>Extra Cheese</em></div>
+//                                   // )))
+//                                 ) : (<></>)
+//                             } */}
+
+
+  // < div className = "shopping-cart-footer" >
+  //           <div className="column">
+  //             <form className="coupon-form" method="post">
+  //               <input className="form-control form-control-sm" type="text" placeholder="Coupon code" required="" />
+  //               <button className="btn btn-outline-primary btn-sm" type="submit">Apply Coupon</button>
+  //             </form>
+  //             <textarea className="form-control " placeholder="Special Instructions"></textarea>
+  //           </div>
+
+  //           <div className="column text-lg">Subtotal: <span className="text-medium">$289.68</span></div>
+  //         </div > 

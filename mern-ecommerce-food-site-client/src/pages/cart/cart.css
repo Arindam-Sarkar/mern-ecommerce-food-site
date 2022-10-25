@@ -1,18 +1,73 @@
-table {
+.wrapper {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.wrapper table {
+  width: auto;
+  min-width: 1000px;
+  /* height: 700px; */
+}
+
+table thead {
   width: 100%;
-  overflow-y: scroll;
+  height: 50px;
 }
 
 
-.cartTableDataWithImage {
-  display: inline-block;
+table tbody {
+  width: 100%;
 }
 
-.cartTableDataWithImage>img {
-  float: left;
+.wrapper table thead th {
+  border: 1px solid black;
 }
 
-.cartTableDataWithImage>div {
-  float: left;
-  vertical-align: bottom;
+.wrapper table tbody td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.CTth1 {
+  width: 50%;
+  text-align: left;
+  text-align: left;
+}
+
+.CTth2 {
+  text-align: center;
+}
+
+
+
+.cTCont {
+  /* text-align: start; */
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
+
+.cTBin {
+  text-align: center;
+}
+
+.ctTd1Img {
+  text-align: center;
+  vertical-align: center;
+
+  border: 1px solid black;
+
+  width: 30%;
+  height: 120px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ctTd1ImgDetails {
+  padding: 20px;
+  text-align: start;
 }

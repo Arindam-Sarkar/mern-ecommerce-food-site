@@ -143,6 +143,37 @@ const ProductZoomed = ({ showProductZoomHandler, inputItem }) => {
   const addToCartHandler = (inputItem) => {
     const itemId = Math.floor((Math.random() * 1000000000000) + 1)
 
+    inputItem.extras = ""
+
+    // Make extras string for products like Pizzas
+    if (inputItem.type == "Pizzas") {
+      // For Pizza Size
+      if (inputItem.size === PIZZA_SIZE_SMALL) {
+        inputItem.extras += "Size Small,"
+      }
+      else if (inputItem.size === PIZZA_SIZE_MEDIUM) {
+        inputItem.extras += "Size Medium,"
+      }
+      else if (inputItem.size === PIZZA_SIZE_LARGE) {
+        inputItem.extras += "Size Large,"
+      }
+
+      // For Extra Chees
+      if (inputItem.extraCheese === true) {
+        inputItem.extras += "Extra Cheese,"
+      }
+
+      // For Extra Vegetables
+      if (inputItem.extraVegetable === true) {
+        inputItem.extras += "Extra Vegetables,"
+      }
+
+      // For Extra Chicken
+      if (inputItem.extraChicken === true) {
+        inputItem.extras += "Extra Chicken"
+      }
+    }
+
     toast("Added To Cart")
 
     // add a unique itemId, this id will be used to remove
