@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 
-import foodItemReducer from '../features/foodItem/foodItem.js'
 import userAuthReducer from '../features/userAuth/userAuth.js'
+import foodItemReducer from '../features/foodItem/foodItem.js'
+import paymentItemReducer from '../features/paymentItem/paymentItem.js'
 
 export const store = configureStore({
   reducer: {
+    userAuth: userAuthReducer,
     foodItem: foodItemReducer,
-    userAuth: userAuthReducer
+    paymentItem: paymentItemReducer
   },
 })

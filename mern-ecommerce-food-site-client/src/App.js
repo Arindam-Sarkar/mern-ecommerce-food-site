@@ -15,6 +15,7 @@ import Login from './pages/login/Login'
 import SignUp from './pages/signUp/SignUp';
 
 import './App.css';
+import PaymentPortal from './pages/paymentPortal/PaymentPortal';
 function App() {
   return (
     <>
@@ -22,7 +23,7 @@ function App() {
         <NavbarComp />
 
         <Routes >
-          <Route path='/' element={< Cart />} />
+          <Route path='/' element={<Pizza />} />
           <Route path='/pizza' element={< Pizza />} />
           <Route path='/sides' element={< Sides />} />
           <Route path='/desserts' element={< Desserts />} />
@@ -32,6 +33,7 @@ function App() {
           <Route path='/signup' element={< SignUp />} />
           <Route path='/cart' element={< Cart />} />
           <Route path='/payment' element={< Payment />} />
+          <Route path='/paymentPortal' element={< PaymentPortal />} />
         </Routes>
       </div>
 

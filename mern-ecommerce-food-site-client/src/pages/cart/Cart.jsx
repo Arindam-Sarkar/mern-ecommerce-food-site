@@ -147,6 +147,7 @@ const Cart = () => {
 
   return (
     <>
+
       <div className='pageMcont'>
         <div className='pageCont'>
 
