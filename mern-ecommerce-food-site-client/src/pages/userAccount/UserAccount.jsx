@@ -14,7 +14,7 @@ import { useEffect } from 'react';
 
 const UserAccount = () => {
   const [leftMenu, setLeftMenu] = useState("address")
-  const [regError, setRegError] = useState({ errPresent: false, errMsg: "" })
+  const [updateError, setUpdateError] = useState({ errPresent: false, errMsg: "" })
 
   const userAuthData = useSelector((state) => state.userAuth.userAuthData)
 
@@ -28,18 +28,8 @@ const UserAccount = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  // Update regdata so that the address form has prefilled values
   useEffect(() => {
-    // {
-    //   "_id": "63544f5dc6060a6e47cecd01",
-    //   "username": "u3",
-    //   "addressLine1": "flat no 1,123 street,",
-    //   "addressLine2": "near main shop",
-    //   "city": "city 1",
-    //   "state": "state 1",
-    //   "email": "u3@u3.com",
-    //   "phone": "123456789"
-    // }
-
     setRegData({
       username: userAuthData._id,
       password: "",
@@ -54,19 +44,23 @@ const UserAccount = () => {
   }, [userAuthData])
 
 
-  const userSignUpHandler = async (e) => {
+  const userAddressUpdateHandler = async (e) => {
     e.preventDefault();
 
     try {
       const resp = await axios.post("/user/register/", regData)
       // Clear error message
-      setRegError({ errPresent: false, errMsg: "" })
+      setUpdateError({ errPresent: false, errMsg: "" })
 
       if (resp.data?._id !== undefined) {
         // Login Successful, put this user data in redux store
         dispatch(addUserAuthData(resp.data))
 
-        toast("Sign-Up Successful")
+        toast("Address Update Successful")
+
+        // Write this response data in userAuth
+        // resp.data
+
 
         // Navigate to home page
         navigate('/')
@@ -74,10 +68,10 @@ const UserAccount = () => {
     } catch (error) {
       if (error.response.data.message?.match('E11000')) {
         if ((error.response.data.message?.match('email_1 dup'))) {
-          setRegError({ errPresent: true, errMsg: "Error - Email already in use" })
+          setUpdateError({ errPresent: true, errMsg: "Error - Email already in use" })
           toast("Error - Email already in use")
         } else if ((error.response.data.message?.match('phone_1 dup'))) {
-          setRegError({ errPresent: true, errMsg: "Error - Phone already in use" })
+          setUpdateError({ errPresent: true, errMsg: "Error - Phone already in use" })
           toast("Error - Phone number already in use")
         }
         window.scrollTo(0, 0)

@@ -81,10 +81,21 @@ export const userUpdateAddress = async (req, res, next) => {
 }
 
 export const userChangePass = async (req, res, next) => {
-  const salt = bcrypt.genSaltSync(10);
-  const hash = bcrypt.hashSync(req.body.password, salt);
-
   try {
+
+    const originalUser = await userModel.findById(req.params.userId)
+    if (!originalUser) {
+      return next(createErrorMsg(404, "User not found !"))
+    }
+
+    const isPasswordCorrect = await bcrypt.compare(req.body.oldPassword, originalUser.password)
+    if (!isPasswordCorrect) {
+      return next(createErrorMsg(400, "Wrong password or username"))
+    }
+
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(req.body.newPassword, salt);
+
     const updatedUser = await userModel.findByIdAndUpdate(req.params.userId,
       { password: hash },
       { new: true }
