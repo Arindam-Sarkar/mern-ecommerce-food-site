@@ -56,3 +56,43 @@ export const userLogin = async (req, res, next) => {
     return next(error)
   }
 }
+
+export const userUpdateAddress = async (req, res, next) => {
+  try {
+    const newUser = await userModel.findByIdAndUpdate(req.params.userId,
+      {
+        addressLine1: req.body.addressLine1,
+        addressLine2: req.body.addressLine2,
+        city: req.body.city,
+        state: req.body.state,
+        phone: req.body.phone
+      }, { new: true })
+
+    if (!newUser) {
+      return next(createErrorMsg(404, "User not found !"))
+    }
+
+    const { password, isAdmin, createdAt, updatedAt, __v, ...remaining } = newUser._doc
+
+    res.status(200).json(remaining)
+  } catch (error) {
+    next(error)
+  }
+}
+
+export const userChangePass = async (req, res, next) => {
+  const salt = bcrypt.genSaltSync(10);
+  const hash = bcrypt.hashSync(req.body.password, salt);
+
+  try {
+    const updatedUser = await userModel.findByIdAndUpdate(req.params.userId,
+      { password: hash },
+      { new: true }
+    )
+
+    const { password, isAdmin, createdAt, updatedAt, __v, ...remaining } = updatedUser._doc
+    res.status(200).json(remaining)
+  } catch (error) {
+    next(error)
+  }
+}

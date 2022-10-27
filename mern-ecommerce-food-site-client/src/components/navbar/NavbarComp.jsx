@@ -115,7 +115,9 @@ const NavbarComp = () => {
           ((userAuthData?._id !== undefined) ?
             (
               < div className='navbarUserMenuCont'>
-                <div className='navbarUserMenuItem'>Account</div>
+                <div className='navbarUserMenuItem'
+                  onClick={(e) => navigateHandler('/userAccount')}
+                >Account</div>
                 <div className='navbarUserMenuItem'
                   onClick={(e) => logoutHandler(e)}>
                   Logout

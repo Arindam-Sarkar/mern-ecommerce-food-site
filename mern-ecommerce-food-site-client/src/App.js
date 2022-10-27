@@ -7,7 +7,6 @@ import Drinks from './pages/drinks/Drinks';
 
 import Payment from './pages/payment/Payment';
 import Cart from './pages/cart/Cart';
-import OrderDetails from './pages/orderDetails/OrderDetails';
 
 import Product from './components/product/Product';
 import Search from './pages/search/Search';
@@ -16,6 +15,7 @@ import SignUp from './pages/signUp/SignUp';
 
 import './App.css';
 import PaymentPortal from './pages/paymentPortal/PaymentPortal';
+import UserAccount from './pages/userAccount/UserAccount';
 function App() {
   return (
     <>
@@ -23,7 +23,7 @@ function App() {
         <NavbarComp />
 
         <Routes >
-          <Route path='/' element={<Cart />} />
+          <Route path='/' element={<UserAccount />} />
           <Route path='/pizza' element={< Pizza />} />
           <Route path='/sides' element={< Sides />} />
           <Route path='/desserts' element={< Desserts />} />
@@ -34,6 +34,7 @@ function App() {
           <Route path='/cart' element={< Cart />} />
           <Route path='/payment' element={< Payment />} />
           <Route path='/paymentPortal' element={< PaymentPortal />} />
+          <Route path='/userAccount' element={< UserAccount />} />
         </Routes>
       </div>
 

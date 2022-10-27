@@ -1,0 +1,102 @@
+.uAccMCont {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+
+  background-color: #f8f9fa;
+}
+
+.uAccLeftCont {
+  height: 100%;
+  width: 15%;
+  border: 1px solid black;
+  /* background-color: blue; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* gap: 20px; */
+}
+
+.uAccLeftContTitle {
+  margin-top: 20px;
+  margin-left: 10px;
+  width: 85%;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  color: #747474;
+
+  /* border: 1px solid black; */
+}
+
+.uAccrightMCont {
+  height: 100%;
+  width: 90%;
+
+  border: 1px solid black;
+
+  background-color: #f8f9fa;
+}
+
+.uAccrightCont {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.uAccEditCont {
+  /* width: 300px;
+  height: 50vh;
+
+  margin-top: 50px; */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  gap: 7px;
+  /* border: 1px solid black; */
+}
+
+.uAccEditCont>label {
+  align-self: flex-start;
+  margin-left: 10px;
+
+  font-size: 1rem;
+  color: #747474;
+
+  font-weight: bold;
+}
+
+.uAccEditCont>input {
+  align-self: flex-start;
+  width: 300px;
+  height: 35px;
+
+  color: #747474;
+  background-color: #f8f9fa;
+
+  border: 0.2px solid black;
+  outline: hidden;
+}
+
+.uAccEditCont>button {
+  align-self: flex-start;
+
+  margin-top: 40px;
+
+  width: 300px;
+  height: 35px;
+
+  color: #747474;
+  /* background-color: #f8f9fa; */
+
+  /* border: 0.2px solid black; */
+  /* outline: hidden; */
+}
