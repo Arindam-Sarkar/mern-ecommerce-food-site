@@ -13,6 +13,9 @@ const OrderSchema = new mongoose.Schema({
   {
     type: Number
   },
+  shippingAmount: {
+    type: Number
+  },
   orderDate:
   {
     type: String

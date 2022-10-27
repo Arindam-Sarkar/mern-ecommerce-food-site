@@ -10,9 +10,12 @@ import {
   addOrderItemData, removeOrderItemData
 } from '../../features/foodItem/foodItem'
 
+import axios from 'axios';
+
 import './payment.css'
 
 const Payment = ({ paymentDetails }) => {
+  const orderItemData = useSelector((state) => state.foodItem.orderItemData)
 
   const [termsCheck, setTermsCheck] = useState(false)
   const [subscribeCheck, setSubscribeCheck] = useState(false)
@@ -31,7 +34,7 @@ const Payment = ({ paymentDetails }) => {
 
   const contactPaymentGatewayHandler = (e) => {
     e.preventDefault()
-    const paymentObject = { ccNumber, ccName, ccExp, ccCvv }
+    const paymentObject = { ccNumber, ccName, ccExp, ccCvv, }
 
     // Add the payment data in store
     dispatch(addPaymentItemData(paymentObject))
@@ -39,7 +42,28 @@ const Payment = ({ paymentDetails }) => {
     //Empty food data from store
     dispatch(removeAllFoodItemData())
 
+    // Write this order data to the database with user's as
+    // route paramenter. This data will be used to show past orders
+    // in the user account page
+
+    writeUserOrderdata(orderItemData)
     navigate('/paymentPortal')
+  }
+
+
+  const writeUserOrderdata = async (orderData) => {
+
+    // localhost:8800/api/order/getall/6354d1a46af5e310faf1c749
+
+    try {
+      const resp = await axios.post("/order/create/", orderData)
+      if (resp.data?._id !== undefined) {
+        console.log("Order Successful");
+      }
+    } catch (error) {
+      console.log("Order Unsuccessful");
+    }
+
   }
 
   return (
@@ -125,17 +149,18 @@ const Payment = ({ paymentDetails }) => {
 
                 <p className='pRightContP'>Order Summart</p>
                 <div className='pRightContHDiv'>
-                  <span>Subtotal</span><span>1000$</span>
+                  <span>Subtotal</span><span>{orderItemData.orderAmount}</span>
                 </div>
 
                 <div className='pRightContHDiv'>
-                  <span>Shipping</span><span>20$</span>
+                  <span>Shipping</span><span>{orderItemData.ShippingAmount}</span>
                 </div>
 
                 <div className='pRightContLine'></div>
 
                 <div className='pRightContHDiv'>
-                  <span>Total</span><span>20$</span>
+                  <span>Total</span>
+                  <span>{orderItemData.orderAmount + orderItemData.ShippingAmount}</span>
                 </div>
 
                 <div className='pRightContHDivSt'>

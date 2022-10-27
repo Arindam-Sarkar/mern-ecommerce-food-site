@@ -84,6 +84,7 @@ const Cart = () => {
 
       orderId: orderId.toString(),
       orderAmount: calculateTotalAmount(orderItemData),
+      shippingAmount: 50,
       orderDate: formattedDate,
       orderTime: formattedTime,
       orderSpecialInstructions: splIns,
@@ -100,7 +101,7 @@ const Cart = () => {
     dispatch(addOrderItemData(completeOrderTmp))
 
     // move on to the payment page
-    // navigate('/payment')
+    navigate('/payment')
   }
 
 
