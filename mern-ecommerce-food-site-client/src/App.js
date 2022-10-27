@@ -23,7 +23,7 @@ function App() {
         <NavbarComp />
 
         <Routes >
-          <Route path='/' element={<Pizza />} />
+          <Route path='/' element={<Cart />} />
           <Route path='/pizza' element={< Pizza />} />
           <Route path='/sides' element={< Sides />} />
           <Route path='/desserts' element={< Desserts />} />

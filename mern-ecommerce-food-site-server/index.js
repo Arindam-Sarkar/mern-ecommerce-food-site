@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser'
 
 import { dbConnect } from './utils/dbConnect.js'
 import userRouter from './routes/userRoute.js'
+import orderRouter from './routes/orderRoute.js'
 import { createErrorMsg, sendErrorResponse } from './utils/errorResponse.js'
 
 
@@ -19,6 +20,7 @@ app.use(cors())
 app.options('*', cors())
 
 app.use("/api/user/", userRouter)
+app.use("/api/order/", orderRouter)
 
 app.use(sendErrorResponse)
 

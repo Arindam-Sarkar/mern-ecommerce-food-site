@@ -37,16 +37,16 @@ const Cart = () => {
   const userAuthData = useSelector((state) => state.userAuth.userAuthData)
   const foodItemData = useSelector((state) => state.foodItem.foodItemData)
 
-  const [completeOrder, setCompleteOrder] = useState({
-    userId: "",
+  // const [completeOrder, setCompleteOrder] = useState({
+  //   userId: "",
 
-    orderId: "",
-    orderAmount: "",
-    orderDate: "",
-    orderTime: "",
-    orderSpecialInstructions: "",
-    orderItems: []
-  })
+  //   orderId: "",
+  //   orderAmount: "",
+  //   orderDate: "",
+  //   orderTime: "",
+  //   orderSpecialInstructions: "",
+  //   orderItems: []
+  // })
 
   const [showProductZoomed, setShowProductZoomed] = useState(false)
   const [itemToEdit, setItemToEdit] = useState({})
@@ -82,7 +82,7 @@ const Cart = () => {
     const completeOrderTmp = {
       userId: orderUserData._id,
 
-      orderId: orderId,
+      orderId: orderId.toString(),
       orderAmount: calculateTotalAmount(orderItemData),
       orderDate: formattedDate,
       orderTime: formattedTime,
@@ -100,7 +100,7 @@ const Cart = () => {
     dispatch(addOrderItemData(completeOrderTmp))
 
     // move on to the payment page
-    navigate('/payment')
+    // navigate('/payment')
   }
 
 
