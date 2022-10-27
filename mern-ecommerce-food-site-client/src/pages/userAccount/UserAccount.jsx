@@ -13,16 +13,16 @@ import { useEffect } from 'react';
 
 
 const UserAccount = () => {
-  const [leftMenu, setLeftMenu] = useState("address")
+  const [leftMenu, setLeftMenu] = useState("password")
   const [updateError, setUpdateError] = useState({ errPresent: false, errMsg: "" })
 
   const userAuthData = useSelector((state) => state.userAuth.userAuthData)
 
 
   const [regData, setRegData] = useState({
-    userId: "", username: "", password: "", passwordReEnter: "",
-    addressLine1: "", addressLine2: "", city: "", state: "",
-    email: "", phone: ""
+    username: "", oldPassword: "", newPassword: "",
+    newPasswordReEnter: "", addressLine1: "", addressLine2: "",
+    city: "", state: "", email: "", phone: ""
   })
 
   const dispatch = useDispatch()
@@ -31,9 +31,10 @@ const UserAccount = () => {
   // Update regdata so that the address form has prefilled values
   useEffect(() => {
     setRegData({
-      username: userAuthData._id,
-      password: "",
-      passwordReEnter: "",
+      username: userAuthData.username,
+      oldPassword: "",
+      newPassword: "",
+      newPasswordReEnter: "",
       addressLine1: userAuthData.addressLine1,
       addressLine2: userAuthData.addressLine2,
       city: userAuthData.city,
@@ -44,38 +45,64 @@ const UserAccount = () => {
   }, [userAuthData])
 
 
+  const userPasswordUpdateHandler = async (e) => {
+    e.preventDefault();
+
+    if (regData.oldPassword.length === 0) {
+      setUpdateError({ errPresent: true, errMsg: "Error - Password cannot be blank" })
+    }
+    else if (regData.newPassword.length === 0) {
+      setUpdateError({ errPresent: true, errMsg: "Error - Password cannot be blank" })
+    }
+    else if (regData.newPassword !== regData.newPasswordReEnter) {
+      setUpdateError({ errPresent: true, errMsg: "Error - Both Passwords Must be Same" })
+    }
+    else {
+      try {
+        const { oldPassword, newPassword } = regData
+        const resp = await axios.post(`/user/updatePass/${userAuthData._id}`,
+          { oldPassword, newPassword })
+
+        if (resp.data?._id !== undefined) {
+          // Update Successful, put this user data in redux store
+          dispatch(addUserAuthData(resp.data))
+          toast("Password Update Successful")
+
+          // Clear error message
+          setUpdateError({ errPresent: false, errMsg: "" })
+        }
+      } catch (error) {
+        if ((error.response.data.message?.match('Wrong password'))) {
+          setUpdateError({ errPresent: true, errMsg: "Error - Old Password Wrong" })
+          toast("Error - Old Password Wrong")
+        }
+        window.scrollTo(0, 0)
+
+      }
+    }
+  }
+
   const userAddressUpdateHandler = async (e) => {
     e.preventDefault();
 
+    const { addressLine1, addressLine2, city, state, phone, ...remaining } = regData
+
     try {
-      const resp = await axios.post("/user/register/", regData)
-      // Clear error message
-      setUpdateError({ errPresent: false, errMsg: "" })
+      const resp = await axios.post(`/user/updateAdd/${userAuthData._id}`,
+        { addressLine1, addressLine2, city, state, phone }
+      )
 
       if (resp.data?._id !== undefined) {
-        // Login Successful, put this user data in redux store
+        // Update Successful, put this user data in redux store
         dispatch(addUserAuthData(resp.data))
-
         toast("Address Update Successful")
 
-        // Write this response data in userAuth
-        // resp.data
-
-
-        // Navigate to home page
-        navigate('/')
+        // Clear error message
+        setUpdateError({ errPresent: false, errMsg: "" })
       }
     } catch (error) {
-      if (error.response.data.message?.match('E11000')) {
-        if ((error.response.data.message?.match('email_1 dup'))) {
-          setUpdateError({ errPresent: true, errMsg: "Error - Email already in use" })
-          toast("Error - Email already in use")
-        } else if ((error.response.data.message?.match('phone_1 dup'))) {
-          setUpdateError({ errPresent: true, errMsg: "Error - Phone already in use" })
-          toast("Error - Phone number already in use")
-        }
-        window.scrollTo(0, 0)
-      }
+      setUpdateError({ errPresent: true, errMsg: "Something Went Wrong - Update Failure" })
+      toast("Something Went Wrong")
     }
   }
 
@@ -109,23 +136,41 @@ const UserAccount = () => {
                 }
                 {(leftMenu === "password") &&
                   <div className='uAccEditCont'>
+
+                    {(updateError.errPresent === true) &&
+                      <div className='uAccErrorMessage'>
+                        {updateError.errMsg}
+                      </div>}
+
+                    <label htmlFor="password">Old Password<span className='uAccRequired'>*</span></label>
+                    <input
+                      onChange={(e) => setRegData((prev) => ({ ...prev, oldPassword: e.target.value }))}
+                      // value={regData.password}
+                      type="password" name="password" id="password" required />
+
                     <label htmlFor="password">New Password<span className='uAccRequired'>*</span></label>
                     <input
-                      onChange={(e) => setRegData((prev) => ({ ...prev, password: e.target.value }))}
+                      onChange={(e) => setRegData((prev) => ({ ...prev, newPassword: e.target.value }))}
                       // value={regData.password}
                       type="password" name="password" id="password" required />
 
                     <label htmlFor="passwordRe">Re-type New Password</label>
                     <input
-                      onChange={(e) => setRegData((prev) => ({ ...prev, passwordReEnter: e.target.value }))}
+                      onChange={(e) => setRegData((prev) => ({ ...prev, newPasswordReEnter: e.target.value }))}
                       // value={regData.passwordReEnter}
                       type="password" name="passwordRe" id="passwordRe" required />
 
-                    <button>Change Password</button>
+                    <button onClick={(e) => userPasswordUpdateHandler(e)}
+                    >Change Password</button>
                   </div>
                 }
                 {(leftMenu === "address") &&
                   <div className='uAccEditCont'>
+
+                    {(updateError.errPresent === true) &&
+                      <div className='uAccErrorMessage'>
+                        {updateError.errMsg}
+                      </div>}
 
                     <label htmlFor="addressL1">Address Line 1</label>
                     <input
@@ -157,7 +202,7 @@ const UserAccount = () => {
                       value={regData.phone}
                       type="text" name="phone" id="phone" required />
 
-                    <button>Update Address</button>
+                    <button onClick={(e) => userAddressUpdateHandler(e)}>Update Address</button>
                   </div>
                 }
               </div>

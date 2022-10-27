@@ -49,6 +49,8 @@ const NavbarComp = () => {
     setShowSideMenu(false)
     setShowUserMenu(false)
     dispatch(removeUserAuthData())
+
+    navigateHandler('/login')
   }
 
   // useEffect(() => {
