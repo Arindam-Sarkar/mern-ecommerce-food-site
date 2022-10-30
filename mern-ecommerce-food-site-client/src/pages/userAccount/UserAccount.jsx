@@ -13,8 +13,9 @@ import { useEffect } from 'react';
 
 
 const UserAccount = () => {
-  const [leftMenu, setLeftMenu] = useState("password")
+  const [leftMenu, setLeftMenu] = useState("orders")
   const [updateError, setUpdateError] = useState({ errPresent: false, errMsg: "" })
+  const [userPastOrders, setUserPastOrders] = useState([])
 
   const userAuthData = useSelector((state) => state.userAuth.userAuthData)
 
@@ -27,6 +28,11 @@ const UserAccount = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    console.log("userPastOrders =", userPastOrders);
+  }, [userPastOrders])
+
 
   // Update regdata so that the address form has prefilled values
   useEffect(() => {
@@ -42,6 +48,23 @@ const UserAccount = () => {
       email: userAuthData.email,
       phone: userAuthData.phone
     })
+
+    // localhost:8800/api/order/getall/6354d1a46af5e310faf1c749
+    const fetchUserPastOrders = async () => {
+
+      try {
+        const resp = await axios.get(`/order/getall/${userAuthData._id}`)
+
+        // Store the past orders
+        setUserPastOrders(resp.data)
+
+        console.log(resp.data);
+      } catch (error) {
+        console.log("error")
+      }
+    }
+
+    fetchUserPastOrders()
   }, [userAuthData])
 
 
@@ -129,8 +152,35 @@ const UserAccount = () => {
 
               <div className='uAccrightCont'>
                 {(leftMenu === "orders") &&
-                  <div>
-                    orders
+                  <div className='uAccTableCont'>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Order Id</th>
+                          <th>Order Date</th>
+                          <th>Order Time</th>
+                          <th>Order Amount</th>
+                          <th>Details</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {
+                          userPastOrders.map(order =>
+                            <tr>
+                              <td>{order.orderId}</td>
+                              <td>{order.orderDate}</td>
+                              <td>{order.orderTime}</td>
+                              <td>{order.orderAmount}</td>
+                              <td>
+                                <button>Details</button>
+                              </td>
+                            </tr>
+                          )
+                        }
+                      </tbody>
+
+                    </table>
 
                   </div>
                 }
