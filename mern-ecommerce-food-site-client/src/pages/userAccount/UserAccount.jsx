@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
+import PastOrderDetails from '../../components/pastOrderDetails/PastOrderDetails';
 
 
 const UserAccount = () => {
@@ -29,9 +30,9 @@ const UserAccount = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    console.log("userPastOrders =", userPastOrders);
-  }, [userPastOrders])
+  // useEffect(() => {
+  //   console.log("userPastOrders =", userPastOrders);
+  // }, [userPastOrders])
 
 
   // Update regdata so that the address form has prefilled values
@@ -167,13 +168,15 @@ const UserAccount = () => {
                       <tbody>
                         {
                           userPastOrders.map(order =>
-                            <tr>
+                            <tr key={order.orderId}>
                               <td>{order.orderId}</td>
                               <td>{order.orderDate}</td>
                               <td>{order.orderTime}</td>
                               <td>{order.orderAmount}</td>
                               <td>
-                                <button>Details</button>
+                                <button
+                                  onClick={() => PastOrderDetails(order.orderItems)}
+                                >Details</button>
                               </td>
                             </tr>
                           )

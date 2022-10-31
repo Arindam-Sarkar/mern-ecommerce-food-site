@@ -5,6 +5,8 @@ import { IoTrashOutline } from 'react-icons/io5'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+import DeleteItem from '../../components/deleteItem/DeleteItem';
+
 import { useSelector, useDispatch } from 'react-redux'
 import {
   addFoodItemData, removeFoodItemData, removeAllFoodItemData,
@@ -22,35 +24,46 @@ import {
   PIZZA_SIZE_LARGE
 } from '../../foodData';
 import ProductZoomed from '../../components/productZoomed/ProductZoomed';
+import axios from 'axios';
 
 // background-color: #f8f9fa;
 // color: #747474;
 
-const PastOrderDetails = ({ foodItemData }) => {
-  const [splIns, setSplIns] = useState("")
-  const [deleteItem, setDeleteItem] = useState({ showDelete: false, item: {} })
-
-  const [emptyCart, setEmptyCart] = useState(false)
+const PastOrderDetails = () => {
+  const [userPastOrders, setUserPastOrders] = useState([])
 
   const userAuthData = useSelector((state) => state.userAuth.userAuthData)
+  const foodItemData = useSelector((state) => state.foodItem.foodItemData)
 
-
-  const [showProductZoomed, setShowProductZoomed] = useState(false)
-  const [itemToEdit, setItemToEdit] = useState({})
-
-  const updateItemHandler = (item) => {
-    setItemToEdit(item)
-    setShowProductZoomed(true)
-  }
-
-  const showProductZoomHandler = (input) => {
-    setShowProductZoomed(input)
-  }
 
   const dispatch = useDispatch()
 
-  const checkoutHandler = (orderItemData, orderUserData) => {
+  useEffect(() => {
+    const fetchUserPastOrders = async () => {
 
+      try {
+        const resp = await axios.get(`/order/getall/${userAuthData._id}`)
+
+        // Store the past orders
+        setUserPastOrders(resp.data[0].orderItems)
+
+        console.log("resp.data = ", resp.data[0].orderItems);
+      } catch (error) {
+        console.log("error")
+      }
+    }
+
+    fetchUserPastOrders()
+  }, [])
+
+
+  const addToCartHandler = (input) => {
+    let inputItem = input
+    inputItem.itemId = Math.floor((Math.random() * 1000000000000) + 1)
+
+    toast("Added To Cart")
+
+    dispatch(addFoodItemData(inputItem))
   }
 
 
@@ -80,49 +93,11 @@ const PastOrderDetails = ({ foodItemData }) => {
     }
   }
 
-  const deleteItemHandler = (item) => {
-    dispatch(removeFoodItemData(item))
-    console.log("item =", item);
-    setDeleteItem({ showDelete: false, item: {} })
-
-    toast("Item Deleted")
-  }
-
-  const emptyCartHandler = () => {
-    dispatch(removeOrderItemData())
-    dispatch(removeAllFoodItemData())
-    setEmptyCart(false)
-    toast("Cart Emptied")
-  }
-
   return (
     <>
 
       <div className='pageMcont'>
         <div className='pageCont'>
-
-          {showProductZoomed &&
-            < ProductZoomed
-              showProductZoomHandler={showProductZoomHandler}
-              inputItem={itemToEdit} />}
-
-          {(deleteItem.showDelete === true) &&
-            <>
-              <div className='cDeleteBox'>
-                <button onClick={() => deleteItemHandler(deleteItem.item)}>Yes</button>
-                <button onClick={() => setDeleteItem({ showDelete: false, item: {} })}>No</button>
-              </div>
-            </>}
-
-          {(emptyCart === true) &&
-            <>
-              <div className='cDeleteBox'>
-                <button onClick={() => emptyCartHandler()}>Yes</button>
-                <button onClick={() => setEmptyCart(false)}>No</button>
-              </div>
-            </>}
-
-          {/* <DeleteItem item={deleteItem.item}/> */}
 
           <div className='wrapper container'>
             <table className="">
@@ -132,15 +107,14 @@ const PastOrderDetails = ({ foodItemData }) => {
                   <th className='CTth2'>Quantity</th>
                   <th className='CTth2'>Subtotal</th>
                   <th className='CTth2'>
-                    <button onClick={() => setEmptyCart(true)}>Empty Cart</button>
+                    <button >Add All Items</button>
                   </th>
                 </tr>
               </thead>
 
-
               <tbody>
                 {
-                  foodItemData?.map((item, index) => (
+                  userPastOrders?.map((item, index) => (
                     <tr key={index}>
                       <td >
                         <div className="cTCont">
@@ -153,19 +127,14 @@ const PastOrderDetails = ({ foodItemData }) => {
                           <div className='ctTd1ImgDetails'>
                             <h4 className="">{item?.name} </h4>
                             <div >{item?.extras} </div>
-                            <button onClick={() => updateItemHandler(item)}
-                            >Edit Order</button>
                           </div>
-
                         </div>
                       </td>
 
                       <td className=" ">{item?.quantity}</td>
                       <td className=" ">{calculateItemAmount(item)}</td>
                       <td className="cTBin">
-                        <IoTrashOutline
-                          className='ctLogoTrash'
-                          onClick={() => setDeleteItem({ showDelete: true, item: item })} />
+                        <button onClick={() => addToCartHandler(item)}>Add To Cart</button>
                       </td>
                     </tr>
                   ))
@@ -175,23 +144,10 @@ const PastOrderDetails = ({ foodItemData }) => {
                   <td colSpan={2}>
                     Total :
                   </td>
-                  <td colSpan={2}>{calculateTotalAmount(foodItemData)}</td>
+                  <td colSpan={2}>{calculateTotalAmount(userPastOrders)}</td>
                 </tr>
 
 
-                <tr>
-                  <td colSpan={3}>
-                    <textarea
-                      className="form-control"
-                      placeholder="Special Instructions"
-                      onChange={(e) => setSplIns(e.target.value)}
-                    >
-                    </textarea>
-                  </td>
-                  <td>
-                    <button onClick={() => checkoutHandler(foodItemData, userAuthData)}>Checkout</button>
-                  </td>
-                </tr>
               </tbody>
             </table>
           </div>

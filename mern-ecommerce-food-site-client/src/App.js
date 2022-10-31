@@ -16,6 +16,7 @@ import SignUp from './pages/signUp/SignUp';
 import './App.css';
 import PaymentPortal from './pages/paymentPortal/PaymentPortal';
 import UserAccount from './pages/userAccount/UserAccount';
+import PastOrderDetails from './components/pastOrderDetails/PastOrderDetails';
 function App() {
   return (
     <>
@@ -23,7 +24,7 @@ function App() {
         <NavbarComp />
 
         <Routes >
-          <Route path='/' element={<Pizza />} />
+          <Route path='/' element={<PastOrderDetails />} />
           <Route path='/pizza' element={< Pizza />} />
           <Route path='/sides' element={< Sides />} />
           <Route path='/desserts' element={< Desserts />} />

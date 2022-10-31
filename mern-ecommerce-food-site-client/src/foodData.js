@@ -13,6 +13,7 @@ export const foodDataResource = [
     quantity: 1,
 
     size: PIZZA_SIZE_SMALL,
+
     sizeCost: [200, 300, 400],
     sizeBilledCost: 0,
 
