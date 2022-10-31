@@ -24,7 +24,7 @@ function App() {
         <NavbarComp />
 
         <Routes >
-          <Route path='/' element={<PastOrderDetails />} />
+          <Route path='/' element={<UserAccount />} />
           <Route path='/pizza' element={< Pizza />} />
           <Route path='/sides' element={< Sides />} />
           <Route path='/desserts' element={< Desserts />} />

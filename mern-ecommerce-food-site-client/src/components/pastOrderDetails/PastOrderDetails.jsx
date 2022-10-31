@@ -1,21 +1,16 @@
 import React, { useEffect } from 'react'
 import './pastOrderDetails.css'
-import { IoTrashOutline } from 'react-icons/io5'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-import DeleteItem from '../../components/deleteItem/DeleteItem';
 
 import { useSelector, useDispatch } from 'react-redux'
 import {
   addFoodItemData, removeFoodItemData, removeAllFoodItemData,
   addOrderItemData, removeOrderItemData
 } from '../../features/foodItem/foodItem'
-import { addUserAuthData, removeUserAuthData } from '../../features/userAuth/userAuth'
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import { MdOutlineCancel } from 'react-icons/md'
 
 import {
   foodDataResource,
@@ -29,33 +24,43 @@ import axios from 'axios';
 // background-color: #f8f9fa;
 // color: #747474;
 
-const PastOrderDetails = () => {
+const PastOrderDetails = ({ OrderItems, exitHandler }) => {
   const [userPastOrders, setUserPastOrders] = useState([])
 
   const userAuthData = useSelector((state) => state.userAuth.userAuthData)
-  const foodItemData = useSelector((state) => state.foodItem.foodItemData)
-
 
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const fetchUserPastOrders = async () => {
+    // const fetchUserPastOrders = async () => {
 
-      try {
-        const resp = await axios.get(`/order/getall/${userAuthData._id}`)
+    //   try {
+    //     const resp = await axios.get(`/order/getall/${userAuthData._id}`)
 
-        // Store the past orders
-        setUserPastOrders(resp.data[0].orderItems)
+    //     // Store the past orders
+    //     setUserPastOrders(resp.data[0].orderItems)
 
-        console.log("resp.data = ", resp.data[0].orderItems);
-      } catch (error) {
-        console.log("error")
-      }
-    }
+    //     console.log("resp.data = ", resp.data[0].orderItems);
+    //   } catch (error) {
+    //     console.log("error")
+    //   }
+    // }
+    // fetchUserPastOrders()
 
-    fetchUserPastOrders()
-  }, [])
+    console.log(OrderItems)
 
+    setUserPastOrders(OrderItems)
+  }, [OrderItems])
+
+  const addAllToCartHandler = (Items) => {
+    Items?.map(item => {
+      let inputItem = item
+      inputItem.itemId = Math.floor((Math.random() * 1000000000000) + 1)
+      dispatch(addFoodItemData(inputItem))
+    })
+
+    toast("All Items Added To Cart")
+  }
 
   const addToCartHandler = (input) => {
     let inputItem = input
@@ -78,7 +83,6 @@ const PastOrderDetails = () => {
         totalAmount += calculateItemAmount(item)
       }
     })
-    // console.log("totalAmount = ", totalAmount);
     return (totalAmount)
   }
 
@@ -95,19 +99,26 @@ const PastOrderDetails = () => {
 
   return (
     <>
-
       <div className='pageMcont'>
         <div className='pageCont'>
 
-          <div className='wrapper container'>
+
+          <div className='pODwrapper'>
+            <MdOutlineCancel
+              className='pODCancel'
+              onClick={() => exitHandler()}
+            />
+
             <table className="">
               <thead>
                 <tr>
-                  <th className='CTth1'>Product Name</th>
-                  <th className='CTth2'>Quantity</th>
-                  <th className='CTth2'>Subtotal</th>
-                  <th className='CTth2'>
-                    <button >Add All Items</button>
+                  <th className='pODth1'>Product Name</th>
+                  <th className='pODth2'>Quantity</th>
+                  <th className='pODth2'>Subtotal</th>
+                  <th className='pODth2'>
+                    <button
+                      onClick={() => { addAllToCartHandler(userPastOrders) }}
+                    >Add All Items</button>
                   </th>
                 </tr>
               </thead>
@@ -117,9 +128,9 @@ const PastOrderDetails = () => {
                   userPastOrders?.map((item, index) => (
                     <tr key={index}>
                       <td >
-                        <div className="cTCont">
+                        <div className="pODCont">
                           <img
-                            className='ctTd1Img'
+                            className='pODTd1Img'
                             src={`${item?.imageUrl}?width=251`}
                             alt="Photo"
                           />
@@ -133,7 +144,7 @@ const PastOrderDetails = () => {
 
                       <td className=" ">{item?.quantity}</td>
                       <td className=" ">{calculateItemAmount(item)}</td>
-                      <td className="cTBin">
+                      <td className="pODBin">
                         <button onClick={() => addToCartHandler(item)}>Add To Cart</button>
                       </td>
                     </tr>
@@ -147,11 +158,9 @@ const PastOrderDetails = () => {
                   <td colSpan={2}>{calculateTotalAmount(userPastOrders)}</td>
                 </tr>
 
-
               </tbody>
             </table>
           </div>
-
 
           <ToastContainer
             position="top-center"
@@ -167,8 +176,6 @@ const PastOrderDetails = () => {
           />
         </div>
       </div>
-
-
 
     </>
   )
