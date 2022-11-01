@@ -92,7 +92,7 @@ table tbody {
   gap: 5px;
 }
 
-.cDeleteBox {
+.cDeleteBoxCont {
   position: absolute;
 
   top: 20vh;
@@ -101,19 +101,27 @@ table tbody {
   margin: 0 auto;
 
   width: 40%;
-  height: 90px;
+  height: 20%;
 
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 
-  justify-self: center;
 
   border-radius: 15px;
 
   border: 1px solid var(--borderColorVar);
   background-color: var(--backgroundColorVar);
 
+}
+
+.cDeleteBoxI {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 20px;
 }
 
 .ctLogoTrash {

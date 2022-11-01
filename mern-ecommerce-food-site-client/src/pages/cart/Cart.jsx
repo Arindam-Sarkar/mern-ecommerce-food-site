@@ -174,19 +174,23 @@ const Cart = () => {
 
           {(deleteItem.showDelete === true) &&
             <>
-              <div className='cDeleteBox'>
-                {/* <h1>Do you want to remove the item?</h1> */}
-                <button onClick={() => deleteItemHandler(deleteItem.item)}>Yes</button>
-                <button onClick={() => setDeleteItem({ showDelete: false, item: {} })}>No</button>
+              <div className='cDeleteBoxCont'>
+                <h5>Do you want to remove the item?</h5>
+                <div className='cDeleteBoxI'>
+                  <button onClick={() => deleteItemHandler(deleteItem.item)}>Yes</button>
+                  <button onClick={() => setDeleteItem({ showDelete: false, item: {} })}>No</button>
+                </div>
               </div>
             </>}
 
           {(emptyCart === true) &&
             <>
-              <div className='cDeleteBox'>
-                {/* <h1>Do you want to empty the cart ?</h1> */}
-                <button onClick={() => emptyCartHandler()}>Yes</button>
-                <button onClick={() => setEmptyCart(false)}>No</button>
+              <div className='cDeleteBoxCont'>
+                <h5>Do you want to empty the cart ?</h5>
+                <div className='cDeleteBoxI'>
+                  <button onClick={() => emptyCartHandler()}>Yes</button>
+                  <button onClick={() => setEmptyCart(false)}>No</button>
+                </div>
               </div>
             </>}
 
