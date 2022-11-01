@@ -65,45 +65,50 @@ const Cart = () => {
   const navigate = useNavigate()
 
   const checkoutHandler = (orderItemData, orderUserData) => {
-    if (orderItemData.length > 0) {
-      const orderId = Math.floor((Math.random() * 1000000000000) + 1)
+    if (userAuthData._id) {
+      if (orderItemData.length > 0) {
+        const orderId = Math.floor((Math.random() * 1000000000000) + 1)
 
-      const today = new Date();
-      const yyyy = today.getFullYear();
-      let mm = today.getMonth() + 1;
-      let dd = today.getDate();
-      if (dd < 10) dd = '0' + dd;
-      if (mm < 10) mm = '0' + mm;
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1;
+        let dd = today.getDate();
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
 
-      let formattedDate = dd + '/' + mm + '/' + yyyy;
-      let formattedTime = today.toLocaleTimeString();
+        let formattedDate = dd + '/' + mm + '/' + yyyy;
+        let formattedTime = today.toLocaleTimeString();
 
-      const completeOrderTmp = {
-        userId: orderUserData._id,
+        const completeOrderTmp = {
+          userId: orderUserData._id,
 
-        orderId: orderId.toString(),
-        orderAmount: calculateTotalAmount(orderItemData),
-        shippingAmount: 50,
-        orderDate: formattedDate,
-        orderTime: formattedTime,
-        orderSpecialInstructions: splIns,
-        orderItems: new Array(...orderItemData)
+          orderId: orderId.toString(),
+          orderAmount: calculateTotalAmount(orderItemData),
+          shippingAmount: 50,
+          orderDate: formattedDate,
+          orderTime: formattedTime,
+          orderSpecialInstructions: splIns,
+          orderItems: new Array(...orderItemData)
+        }
+
+        // console.log("orderItemData =", orderItemData)
+        // console.log("orderUserData =", orderUserData)
+
+        console.log("completeOrderTmp =", completeOrderTmp);
+
+        // put this data in the redus store
+        dispatch(removeOrderItemData())
+        dispatch(addOrderItemData(completeOrderTmp))
+
+        // move on to the payment page
+        navigate('/payment')
       }
-
-      // console.log("orderItemData =", orderItemData)
-      // console.log("orderUserData =", orderUserData)
-
-      console.log("completeOrderTmp =", completeOrderTmp);
-
-      // put this data in the redus store
-      dispatch(removeOrderItemData())
-      dispatch(addOrderItemData(completeOrderTmp))
-
-      // move on to the payment page
-      navigate('/payment')
-    }
-    else {
-      toast("Cart Is Empty, please add items.")
+      else {
+        toast("Cart Is Empty, please add items.")
+      }
+    } else {
+      toast("Please Login.")
+      navigate('/login')
     }
   }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { BsFillCreditCardFill } from 'react-icons/bs'
 import { MdOutlineCancel } from 'react-icons/md'
@@ -13,9 +13,12 @@ import {
 import axios from 'axios';
 
 import './payment.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Payment = ({ paymentDetails }) => {
   const orderItemData = useSelector((state) => state.foodItem.orderItemData)
+  const userAuthData = useSelector((state) => state.userAuth.userAuthData)
 
   const [termsCheck, setTermsCheck] = useState(false)
   const [subscribeCheck, setSubscribeCheck] = useState(false)
@@ -34,21 +37,35 @@ const Payment = ({ paymentDetails }) => {
 
   const contactPaymentGatewayHandler = (e) => {
     e.preventDefault()
-    const paymentObject = { ccNumber, ccName, ccExp, ccCvv, }
 
-    // Add the payment data in store
-    dispatch(addPaymentItemData(paymentObject))
+    if (userAuthData._id) {
+      const paymentObject = { ccNumber, ccName, ccExp, ccCvv, }
 
-    //Empty food data from store
-    dispatch(removeAllFoodItemData())
+      // Add the payment data in store
+      dispatch(addPaymentItemData(paymentObject))
 
-    // Write this order data to the database with user's as
-    // route paramenter. This data will be used to show past orders
-    // in the user account page
+      //Empty food data from store
+      dispatch(removeAllFoodItemData())
 
-    writeUserOrderdata(orderItemData)
-    navigate('/paymentPortal')
+      // Write this order data to the database with user's as
+      // route paramenter. This data will be used to show past orders
+      // in the user account page
+
+      writeUserOrderdata(orderItemData)
+      navigate('/paymentPortal')
+    } else {
+      toast("Please login")
+      navigate('/login')
+    }
   }
+
+  useEffect(() => {
+    if (!userAuthData._id) {
+      // toast("Please login")
+      navigate('/login')
+    }
+  }, [orderItemData, userAuthData])
+
 
 
   const writeUserOrderdata = async (orderData) => {
@@ -182,9 +199,21 @@ const Payment = ({ paymentDetails }) => {
                 <button className='pRightContButton' type="submit">Place Order</button>
               </div>
             </div>
-
           </form>
+
         </div>
+        <ToastContainer
+          position="top-center"
+          autoClose={500}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable={false}
+          pauseOnHover
+          theme="light"
+        />
       </div>
     </>
   )
