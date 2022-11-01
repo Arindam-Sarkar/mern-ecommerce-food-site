@@ -30,45 +30,32 @@ const PastOrderDetails = ({ OrderItems, exitHandler }) => {
   const userAuthData = useSelector((state) => state.userAuth.userAuthData)
 
   const dispatch = useDispatch()
+  var inputItem = {}
 
   useEffect(() => {
-    // const fetchUserPastOrders = async () => {
-
-    //   try {
-    //     const resp = await axios.get(`/order/getall/${userAuthData._id}`)
-
-    //     // Store the past orders
-    //     setUserPastOrders(resp.data[0].orderItems)
-
-    //     console.log("resp.data = ", resp.data[0].orderItems);
-    //   } catch (error) {
-    //     console.log("error")
-    //   }
-    // }
-    // fetchUserPastOrders()
-
-    console.log(OrderItems)
-
     setUserPastOrders(OrderItems)
   }, [OrderItems])
 
   const addAllToCartHandler = (Items) => {
-    Items?.map(item => {
-      let inputItem = item
-      inputItem.itemId = Math.floor((Math.random() * 1000000000000) + 1)
-      dispatch(addFoodItemData(inputItem))
-    })
+    // Items?.map(item => {
+    //   inputItem = item
+    //   inputItem.itemId = Math.floor((Math.random() * 1000000000000) + 1)
+    //   dispatch(addFoodItemData(inputItem))
+    // })
 
     toast("All Items Added To Cart")
   }
 
   const addToCartHandler = (input) => {
-    let inputItem = input
-    inputItem.itemId = Math.floor((Math.random() * 1000000000000) + 1)
+    // let itemIdTmp = Math.floor((Math.random() * 1000000000000) + 1)
 
-    toast("Added To Cart")
+    // const { itemId, ...remaining } = input
 
-    dispatch(addFoodItemData(inputItem))
+    // dispatch(addFoodItemData({
+    //   itemId:
+    // }))
+
+    // toast("Item Added To Cart")
   }
 
 
@@ -99,83 +86,79 @@ const PastOrderDetails = ({ OrderItems, exitHandler }) => {
 
   return (
     <>
-      <div className='pageMcont'>
-        <div className='pageCont'>
-
-
-          <div className='pODwrapper'>
-            <MdOutlineCancel
-              className='pODCancel'
-              onClick={() => exitHandler()}
-            />
-
-            <table className="">
-              <thead>
-                <tr>
-                  <th className='pODth1'>Product Name</th>
-                  <th className='pODth2'>Quantity</th>
-                  <th className='pODth2'>Subtotal</th>
-                  <th className='pODth2'>
-                    <button
-                      onClick={() => { addAllToCartHandler(userPastOrders) }}
-                    >Add All Items</button>
-                  </th>
-                </tr>
-              </thead>
-
-              <tbody>
-                {
-                  userPastOrders?.map((item, index) => (
-                    <tr key={index}>
-                      <td >
-                        <div className="pODCont">
-                          <img
-                            className='pODTd1Img'
-                            src={`${item?.imageUrl}?width=251`}
-                            alt="Photo"
-                          />
-
-                          <div className='ctTd1ImgDetails'>
-                            <h4 className="">{item?.name} </h4>
-                            <div >{item?.extras} </div>
-                          </div>
-                        </div>
-                      </td>
-
-                      <td className=" ">{item?.quantity}</td>
-                      <td className=" ">{calculateItemAmount(item)}</td>
-                      <td className="pODBin">
-                        <button onClick={() => addToCartHandler(item)}>Add To Cart</button>
-                      </td>
-                    </tr>
-                  ))
-                }
-
-                <tr>
-                  <td colSpan={2}>
-                    Total :
-                  </td>
-                  <td colSpan={2}>{calculateTotalAmount(userPastOrders)}</td>
-                </tr>
-
-              </tbody>
-            </table>
-          </div>
-
-          <ToastContainer
-            position="top-center"
-            autoClose={500}
-            hideProgressBar
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            pauseOnFocusLoss
-            draggable={false}
-            pauseOnHover
-            theme="light"
+      <div className='pODMwrapper'>
+        <div className='pODwrapper'>
+          <MdOutlineCancel
+            className='pODCancel'
+            onClick={() => exitHandler()}
           />
+
+          <table className="">
+            <thead>
+              <tr>
+                <th className='pODth1'>Product Name</th>
+                <th className='pODth2'>Quantity</th>
+                <th className='pODth2'>Subtotal</th>
+                <th className='pODth2'>
+                  <button
+                    onClick={() => { addAllToCartHandler(userPastOrders) }}
+                  >Add All Items</button>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {
+                userPastOrders?.map((item, index) => (
+                  <tr key={index}>
+                    <td >
+                      <div className="pODCont">
+                        <img
+                          className='pODTd1Img'
+                          src={`${item?.imageUrl}?width=251`}
+                          alt="Photo"
+                        />
+
+                        <div className='ctTd1ImgDetails'>
+                          <h4 className="">{item?.name} </h4>
+                          <div >{item?.extras} </div>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td className=" ">{item?.quantity}</td>
+                    <td className=" ">{calculateItemAmount(item)}</td>
+                    <td className="pODBin">
+                      <button onClick={() => addToCartHandler(item)}>Add To Cart</button>
+                    </td>
+                  </tr>
+                ))
+              }
+
+              <tr>
+                <td colSpan={2}>
+                  Total :
+                </td>
+                <td colSpan={2}>{calculateTotalAmount(userPastOrders)}</td>
+              </tr>
+
+            </tbody>
+          </table>
         </div>
       </div>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={500}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable={false}
+        pauseOnHover
+        theme="light"
+      />
 
     </>
   )

@@ -144,277 +144,145 @@ const UserAccount = () => {
       <div className='pageMcont'>
         <div className='pageCont'>
 
-          {(showPastOrderItems.show === true) ?
-            (<>
-              <PastOrderDetails
-                OrderItems={showPastOrderItems.items}
-                exitHandler={exitShowPastOrderMenuHandler}
-              />
-              <div className='uAccMCont'>
-                <div className='uAccLeftCont'>
-                  <div className='uAccLeftContTitle'
-                    onClick={() => setLeftMenu("orders")}
-                  >Past Orders</div>
+          <div className='uAccMCont'>
+            <div className='uAccLeftCont'>
+              <div className='uAccLeftContTitle'
+                onClick={() => setLeftMenu("orders")}
+              >Past Orders</div>
 
-                  <div className='uAccLeftContTitle'
-                    onClick={() => setLeftMenu("password")}
-                  >Change Password</div>
-                  <div className='uAccLeftContTitle'
-                    onClick={() => setLeftMenu("address")}
-                  >Change Address</div>
-                </div>
+              <div className='uAccLeftContTitle'
+                onClick={() => setLeftMenu("password")}
+              >Change Password</div>
+              <div className='uAccLeftContTitle'
+                onClick={() => setLeftMenu("address")}
+              >Change Address</div>
+            </div>
 
-                <div className='uAccrightMCont'>
+            <div className='uAccrightMCont'>
 
-                  <div className='uAccrightCont'>
-                    {(leftMenu === "orders") &&
-                      <div className='uAccTableCont'>
-                        <table>
-                          <thead>
-                            <tr>
-                              <th>Order Id</th>
-                              <th>Order Date</th>
-                              <th>Order Time</th>
-                              <th>Order Amount</th>
-                              <th>Details</th>
+              <div className='uAccrightCont'>
+                {(leftMenu === "orders") &&
+                  <div className='uAccTableCont'>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Order Id</th>
+                          <th>Order Date</th>
+                          <th>Order Time</th>
+                          <th>Order Amount</th>
+                          <th>Details</th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        {
+                          userPastOrders.map(order =>
+                            <tr key={order.orderId}>
+                              <td>{order.orderId}</td>
+                              <td>{order.orderDate}</td>
+                              <td>{order.orderTime}</td>
+                              <td>{order.orderAmount}</td>
+                              <td>
+                                <button
+                                  onClick={() => { showPastOrderMenuHandler(order) }}
+                                >Details</button>
+                              </td>
                             </tr>
-                          </thead>
+                          )
+                        }
+                      </tbody>
 
-                          <tbody>
-                            {
-                              userPastOrders.map(order =>
-                                <tr key={order.orderId}>
-                                  <td>{order.orderId}</td>
-                                  <td>{order.orderDate}</td>
-                                  <td>{order.orderTime}</td>
-                                  <td>{order.orderAmount}</td>
-                                  <td>
-                                    <button
-                                      onClick={() => { showPastOrderMenuHandler(order) }}
-                                    >Details</button>
-                                  </td>
-                                </tr>
-                              )
-                            }
-                          </tbody>
+                    </table>
 
-                        </table>
-
-                      </div>
-                    }
-                    {(leftMenu === "password") &&
-                      <div className='uAccEditCont'>
-
-                        {(updateError.errPresent === true) &&
-                          <div className='uAccErrorMessage'>
-                            {updateError.errMsg}
-                          </div>}
-
-                        <label htmlFor="password">Old Password<span className='uAccRequired'>*</span></label>
-                        <input
-                          onChange={(e) => setRegData((prev) => ({ ...prev, oldPassword: e.target.value }))}
-                          // value={regData.password}
-                          type="password" name="password" id="password" required />
-
-                        <label htmlFor="password">New Password<span className='uAccRequired'>*</span></label>
-                        <input
-                          onChange={(e) => setRegData((prev) => ({ ...prev, newPassword: e.target.value }))}
-                          // value={regData.password}
-                          type="password" name="password" id="password" required />
-
-                        <label htmlFor="passwordRe">Re-type New Password</label>
-                        <input
-                          onChange={(e) => setRegData((prev) => ({ ...prev, newPasswordReEnter: e.target.value }))}
-                          // value={regData.passwordReEnter}
-                          type="password" name="passwordRe" id="passwordRe" required />
-
-                        <button onClick={(e) => userPasswordUpdateHandler(e)}
-                        >Change Password</button>
-                      </div>
-                    }
-                    {(leftMenu === "address") &&
-                      <div className='uAccEditCont'>
-
-                        {(updateError.errPresent === true) &&
-                          <div className='uAccErrorMessage'>
-                            {updateError.errMsg}
-                          </div>}
-
-                        <label htmlFor="addressL1">Address Line 1</label>
-                        <input
-                          onChange={(e) => setRegData((prev) => ({ ...prev, addressLine1: e.target.value }))}
-                          value={regData.addressLine1}
-                          type="text" name="addressL1" id="addressL1" required />
-
-                        <label htmlFor="addressL2">Address Line 2</label>
-                        <input
-                          onChange={(e) => setRegData((prev) => ({ ...prev, addressLine2: e.target.value }))}
-                          value={regData.addressLine2}
-                          type="text" name="addressL2" id="addressL2" />
-
-                        <label htmlFor="city">City</label>
-                        <input
-                          onChange={(e) => setRegData((prev) => ({ ...prev, city: e.target.value }))}
-                          value={regData.city}
-                          type="text" name="city" id="city" required />
-
-                        <label htmlFor="state">State</label>
-                        <input
-                          onChange={(e) => setRegData((prev) => ({ ...prev, state: e.target.value }))}
-                          value={regData.state}
-                          type="text" name="state" id="state" required />
-
-                        <label htmlFor="phone">Phone Number</label>
-                        <input
-                          onChange={(e) => setRegData((prev) => ({ ...prev, phone: e.target.value }))}
-                          value={regData.phone}
-                          type="text" name="phone" id="phone" required />
-
-                        <button onClick={(e) => userAddressUpdateHandler(e)}>Update Address</button>
-                      </div>
-                    }
                   </div>
-                </div>
+                }
+                {(leftMenu === "password") &&
+                  <div className='uAccEditCont'>
+
+                    {(updateError.errPresent === true) &&
+                      <div className='uAccErrorMessage'>
+                        {updateError.errMsg}
+                      </div>}
+
+                    <label htmlFor="password">Old Password<span className='uAccRequired'>*</span></label>
+                    <input
+                      onChange={(e) => setRegData((prev) => ({ ...prev, oldPassword: e.target.value }))}
+                      // value={regData.password}
+                      type="password" name="password" id="password" required />
+
+                    <label htmlFor="password">New Password<span className='uAccRequired'>*</span></label>
+                    <input
+                      onChange={(e) => setRegData((prev) => ({ ...prev, newPassword: e.target.value }))}
+                      // value={regData.password}
+                      type="password" name="password" id="password" required />
+
+                    <label htmlFor="passwordRe">Re-type New Password</label>
+                    <input
+                      onChange={(e) => setRegData((prev) => ({ ...prev, newPasswordReEnter: e.target.value }))}
+                      // value={regData.passwordReEnter}
+                      type="password" name="passwordRe" id="passwordRe" required />
+
+                    <button onClick={(e) => userPasswordUpdateHandler(e)}
+                    >Change Password</button>
+                  </div>
+                }
+                {(leftMenu === "address") &&
+                  <div className='uAccEditCont'>
+
+                    {(updateError.errPresent === true) &&
+                      <div className='uAccErrorMessage'>
+                        {updateError.errMsg}
+                      </div>}
+
+                    <label htmlFor="addressL1">Address Line 1</label>
+                    <input
+                      onChange={(e) => setRegData((prev) => ({ ...prev, addressLine1: e.target.value }))}
+                      value={regData.addressLine1}
+                      type="text" name="addressL1" id="addressL1" required />
+
+                    <label htmlFor="addressL2">Address Line 2</label>
+                    <input
+                      onChange={(e) => setRegData((prev) => ({ ...prev, addressLine2: e.target.value }))}
+                      value={regData.addressLine2}
+                      type="text" name="addressL2" id="addressL2" />
+
+                    <label htmlFor="city">City</label>
+                    <input
+                      onChange={(e) => setRegData((prev) => ({ ...prev, city: e.target.value }))}
+                      value={regData.city}
+                      type="text" name="city" id="city" required />
+
+                    <label htmlFor="state">State</label>
+                    <input
+                      onChange={(e) => setRegData((prev) => ({ ...prev, state: e.target.value }))}
+                      value={regData.state}
+                      type="text" name="state" id="state" required />
+
+                    <label htmlFor="phone">Phone Number</label>
+                    <input
+                      onChange={(e) => setRegData((prev) => ({ ...prev, phone: e.target.value }))}
+                      value={regData.phone}
+                      type="text" name="phone" id="phone" required />
+
+                    <button onClick={(e) => userAddressUpdateHandler(e)}>Update Address</button>
+                  </div>
+                }
               </div>
-            </>
-            ) :
-            (
-              <>
-                <div className='uAccMCont'>
-                  <div className='uAccLeftCont'>
-                    <div className='uAccLeftContTitle'
-                      onClick={() => setLeftMenu("orders")}
-                    >Past Orders</div>
-
-                    <div className='uAccLeftContTitle'
-                      onClick={() => setLeftMenu("password")}
-                    >Change Password</div>
-                    <div className='uAccLeftContTitle'
-                      onClick={() => setLeftMenu("address")}
-                    >Change Address</div>
-                  </div>
-
-                  <div className='uAccrightMCont'>
-
-                    <div className='uAccrightCont'>
-                      {(leftMenu === "orders") &&
-                        <div className='uAccTableCont'>
-                          <table>
-                            <thead>
-                              <tr>
-                                <th>Order Id</th>
-                                <th>Order Date</th>
-                                <th>Order Time</th>
-                                <th>Order Amount</th>
-                                <th>Details</th>
-                              </tr>
-                            </thead>
-
-                            <tbody>
-                              {
-                                userPastOrders.map(order =>
-                                  <tr key={order.orderId}>
-                                    <td>{order.orderId}</td>
-                                    <td>{order.orderDate}</td>
-                                    <td>{order.orderTime}</td>
-                                    <td>{order.orderAmount}</td>
-                                    <td>
-                                      <button
-                                        onClick={() => { showPastOrderMenuHandler(order) }}
-                                      >Details</button>
-                                    </td>
-                                  </tr>
-                                )
-                              }
-                            </tbody>
-
-                          </table>
-
-                        </div>
-                      }
-                      {(leftMenu === "password") &&
-                        <div className='uAccEditCont'>
-
-                          {(updateError.errPresent === true) &&
-                            <div className='uAccErrorMessage'>
-                              {updateError.errMsg}
-                            </div>}
-
-                          <label htmlFor="password">Old Password<span className='uAccRequired'>*</span></label>
-                          <input
-                            onChange={(e) => setRegData((prev) => ({ ...prev, oldPassword: e.target.value }))}
-                            // value={regData.password}
-                            type="password" name="password" id="password" required />
-
-                          <label htmlFor="password">New Password<span className='uAccRequired'>*</span></label>
-                          <input
-                            onChange={(e) => setRegData((prev) => ({ ...prev, newPassword: e.target.value }))}
-                            // value={regData.password}
-                            type="password" name="password" id="password" required />
-
-                          <label htmlFor="passwordRe">Re-type New Password</label>
-                          <input
-                            onChange={(e) => setRegData((prev) => ({ ...prev, newPasswordReEnter: e.target.value }))}
-                            // value={regData.passwordReEnter}
-                            type="password" name="passwordRe" id="passwordRe" required />
-
-                          <button onClick={(e) => userPasswordUpdateHandler(e)}
-                          >Change Password</button>
-                        </div>
-                      }
-                      {(leftMenu === "address") &&
-                        <div className='uAccEditCont'>
-
-                          {(updateError.errPresent === true) &&
-                            <div className='uAccErrorMessage'>
-                              {updateError.errMsg}
-                            </div>}
-
-                          <label htmlFor="addressL1">Address Line 1</label>
-                          <input
-                            onChange={(e) => setRegData((prev) => ({ ...prev, addressLine1: e.target.value }))}
-                            value={regData.addressLine1}
-                            type="text" name="addressL1" id="addressL1" required />
-
-                          <label htmlFor="addressL2">Address Line 2</label>
-                          <input
-                            onChange={(e) => setRegData((prev) => ({ ...prev, addressLine2: e.target.value }))}
-                            value={regData.addressLine2}
-                            type="text" name="addressL2" id="addressL2" />
-
-                          <label htmlFor="city">City</label>
-                          <input
-                            onChange={(e) => setRegData((prev) => ({ ...prev, city: e.target.value }))}
-                            value={regData.city}
-                            type="text" name="city" id="city" required />
-
-                          <label htmlFor="state">State</label>
-                          <input
-                            onChange={(e) => setRegData((prev) => ({ ...prev, state: e.target.value }))}
-                            value={regData.state}
-                            type="text" name="state" id="state" required />
-
-                          <label htmlFor="phone">Phone Number</label>
-                          <input
-                            onChange={(e) => setRegData((prev) => ({ ...prev, phone: e.target.value }))}
-                            value={regData.phone}
-                            type="text" name="phone" id="phone" required />
-
-                          <button onClick={(e) => userAddressUpdateHandler(e)}>Update Address</button>
-                        </div>
-                      }
-                    </div>
-                  </div>
-                </div>
-              </>
-            )
-          }
-
-
-
+            </div>
+          </div>
 
         </div>
       </div>
+
+      {(showPastOrderItems.show === true) &&
+        <>
+          <PastOrderDetails
+            OrderItems={showPastOrderItems.items}
+            exitHandler={exitShowPastOrderMenuHandler}
+          />
+        </>
+      }
+
       <ToastContainer
         position="top-center"
         autoClose={500}
