@@ -69,9 +69,9 @@ const SignUp = () => {
   }
 
 
-  useEffect(() => {
-    setRegData(dummyData)
-  }, [])
+  // useEffect(() => {
+  //   setRegData(dummyData)
+  // }, [])
 
 
   return (

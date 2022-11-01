@@ -75,6 +75,8 @@ const Login = () => {
         New User? Click Here to Sign-Up.
       </div>
 
+      <h7 className='loginDummyCredentials'>Dummy Credentials : u4@u4.com, Password: u4</h7>
+
       <ToastContainer
         position="top-center"
         autoClose={500}

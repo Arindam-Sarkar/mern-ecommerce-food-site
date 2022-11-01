@@ -77,3 +77,7 @@
   display: flex;
   justify-content: center;
 }
+
+.loginDummyCredentials {
+  margin-top: 20px;
+}
