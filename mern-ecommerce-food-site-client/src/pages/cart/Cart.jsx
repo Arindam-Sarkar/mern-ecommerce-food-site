@@ -1,10 +1,6 @@
 import React, { useEffect } from 'react'
 import './cart.css'
 import { IoTrashOutline } from 'react-icons/io5'
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 import DeleteItem from '../../components/deleteItem/DeleteItem';
 
 import { useSelector, useDispatch } from 'react-redux'
@@ -15,6 +11,8 @@ import {
 import { addUserAuthData, removeUserAuthData } from '../../features/userAuth/userAuth'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 import {
@@ -67,41 +65,46 @@ const Cart = () => {
   const navigate = useNavigate()
 
   const checkoutHandler = (orderItemData, orderUserData) => {
-    const orderId = Math.floor((Math.random() * 1000000000000) + 1)
+    if (orderItemData.length > 0) {
+      const orderId = Math.floor((Math.random() * 1000000000000) + 1)
 
-    const today = new Date();
-    const yyyy = today.getFullYear();
-    let mm = today.getMonth() + 1;
-    let dd = today.getDate();
-    if (dd < 10) dd = '0' + dd;
-    if (mm < 10) mm = '0' + mm;
+      const today = new Date();
+      const yyyy = today.getFullYear();
+      let mm = today.getMonth() + 1;
+      let dd = today.getDate();
+      if (dd < 10) dd = '0' + dd;
+      if (mm < 10) mm = '0' + mm;
 
-    let formattedDate = dd + '/' + mm + '/' + yyyy;
-    let formattedTime = today.toLocaleTimeString();
+      let formattedDate = dd + '/' + mm + '/' + yyyy;
+      let formattedTime = today.toLocaleTimeString();
 
-    const completeOrderTmp = {
-      userId: orderUserData._id,
+      const completeOrderTmp = {
+        userId: orderUserData._id,
 
-      orderId: orderId.toString(),
-      orderAmount: calculateTotalAmount(orderItemData),
-      shippingAmount: 50,
-      orderDate: formattedDate,
-      orderTime: formattedTime,
-      orderSpecialInstructions: splIns,
-      orderItems: new Array(...orderItemData)
+        orderId: orderId.toString(),
+        orderAmount: calculateTotalAmount(orderItemData),
+        shippingAmount: 50,
+        orderDate: formattedDate,
+        orderTime: formattedTime,
+        orderSpecialInstructions: splIns,
+        orderItems: new Array(...orderItemData)
+      }
+
+      // console.log("orderItemData =", orderItemData)
+      // console.log("orderUserData =", orderUserData)
+
+      console.log("completeOrderTmp =", completeOrderTmp);
+
+      // put this data in the redus store
+      dispatch(removeOrderItemData())
+      dispatch(addOrderItemData(completeOrderTmp))
+
+      // move on to the payment page
+      navigate('/payment')
     }
-
-    // console.log("orderItemData =", orderItemData)
-    // console.log("orderUserData =", orderUserData)
-
-    console.log("completeOrderTmp =", completeOrderTmp);
-
-    // put this data in the redus store
-    dispatch(removeOrderItemData())
-    dispatch(addOrderItemData(completeOrderTmp))
-
-    // move on to the payment page
-    navigate('/payment')
+    else {
+      toast("Cart Is Empty, please add items.")
+    }
   }
 
 
@@ -146,6 +149,18 @@ const Cart = () => {
     toast("Cart Emptied")
   }
 
+
+  const setEmptyCartHandler = (e) => {
+    e.preventDefault()
+
+    if (foodItemData.length > 0) {
+      setEmptyCart(true)
+    } else {
+      toast("Cart Already Empty")
+    }
+
+  }
+
   return (
     <>
 
@@ -160,6 +175,7 @@ const Cart = () => {
           {(deleteItem.showDelete === true) &&
             <>
               <div className='cDeleteBox'>
+                {/* <h1>Do you want to remove the item?</h1> */}
                 <button onClick={() => deleteItemHandler(deleteItem.item)}>Yes</button>
                 <button onClick={() => setDeleteItem({ showDelete: false, item: {} })}>No</button>
               </div>
@@ -168,6 +184,7 @@ const Cart = () => {
           {(emptyCart === true) &&
             <>
               <div className='cDeleteBox'>
+                {/* <h1>Do you want to empty the cart ?</h1> */}
                 <button onClick={() => emptyCartHandler()}>Yes</button>
                 <button onClick={() => setEmptyCart(false)}>No</button>
               </div>
@@ -175,7 +192,7 @@ const Cart = () => {
 
           {/* <DeleteItem item={deleteItem.item}/> */}
 
-          <div className='wrapper container'>
+          <div className='wrapper'>
             <table className="">
               <thead>
                 <tr>
@@ -183,7 +200,7 @@ const Cart = () => {
                   <th className='CTth2'>Quantity</th>
                   <th className='CTth2'>Subtotal</th>
                   <th className='CTth2'>
-                    <button onClick={() => setEmptyCart(true)}>Empty Cart</button>
+                    <button onClick={(e) => setEmptyCartHandler(e)}>Empty Cart</button>
                   </th>
                 </tr>
               </thead>

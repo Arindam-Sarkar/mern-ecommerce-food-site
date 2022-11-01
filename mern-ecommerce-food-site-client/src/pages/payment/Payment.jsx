@@ -153,14 +153,14 @@ const Payment = ({ paymentDetails }) => {
                 </div>
 
                 <div className='pRightContHDiv'>
-                  <span>Shipping</span><span>{orderItemData.ShippingAmount}</span>
+                  <span>Shipping</span><span>{orderItemData.shippingAmount}</span>
                 </div>
 
                 <div className='pRightContLine'></div>
 
                 <div className='pRightContHDiv'>
                   <span>Total</span>
-                  <span>{orderItemData.orderAmount + orderItemData.ShippingAmount}</span>
+                  <span>{orderItemData.orderAmount + orderItemData.shippingAmount}</span>
                 </div>
 
                 <div className='pRightContHDivSt'>
