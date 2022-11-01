@@ -37,25 +37,27 @@ const PastOrderDetails = ({ OrderItems, exitHandler }) => {
   }, [OrderItems])
 
   const addAllToCartHandler = (Items) => {
-    // Items?.map(item => {
-    //   inputItem = item
-    //   inputItem.itemId = Math.floor((Math.random() * 1000000000000) + 1)
-    //   dispatch(addFoodItemData(inputItem))
-    // })
+    Items?.map(item => {
+      let itemIdTmp = Math.floor((Math.random() * 1000000000000) + 1)
+
+      const { itemId, ...remaining } = item
+      dispatch(addFoodItemData({
+        ...remaining, itemId: itemIdTmp,
+      }))
+    })
 
     toast("All Items Added To Cart")
   }
 
-  const addToCartHandler = (input) => {
-    // let itemIdTmp = Math.floor((Math.random() * 1000000000000) + 1)
+  const addToCartHandler = (item) => {
+    let itemIdTmp = Math.floor((Math.random() * 1000000000000) + 1)
 
-    // const { itemId, ...remaining } = input
+    const { itemId, ...remaining } = item
+    dispatch(addFoodItemData({
+      ...remaining, itemId: itemIdTmp,
+    }))
 
-    // dispatch(addFoodItemData({
-    //   itemId:
-    // }))
-
-    // toast("Item Added To Cart")
+    toast("Item Added To Cart")
   }
 
 
@@ -165,8 +167,3 @@ const PastOrderDetails = ({ OrderItems, exitHandler }) => {
 }
 
 export default PastOrderDetails
-
-
-
-
-
