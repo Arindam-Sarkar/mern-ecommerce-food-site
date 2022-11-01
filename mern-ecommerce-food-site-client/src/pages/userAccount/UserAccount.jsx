@@ -58,6 +58,8 @@ const UserAccount = () => {
         const resp = await axios.get(`/order/getall/${userAuthData._id}`)
 
         // Store the past orders
+
+        resp.data.reverse()
         setUserPastOrders(resp.data)
 
         console.log(resp.data);
