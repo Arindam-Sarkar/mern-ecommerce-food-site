@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { serverUrl } from '../../serverUrl';
 
 
 let dummyData = {
@@ -40,8 +41,9 @@ const SignUp = () => {
   const userSignUpHandler = async (e) => {
     e.preventDefault();
 
+    // `${serverUrl}/user/register/`
     try {
-      const resp = await axios.post("/user/register/", regData)
+      const resp = await axios.post(`${serverUrl}/user/register/`, regData)
       // Clear error message
       setRegError({ errPresent: false, errMsg: "" })
 

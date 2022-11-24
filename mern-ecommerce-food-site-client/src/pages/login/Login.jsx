@@ -9,6 +9,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import './login.css'
+import { serverUrl } from '../../serverUrl';
+
 
 const Login = () => {
   const [loginData, setlogindata] = useState({ email: "", password: "" })
@@ -21,7 +23,7 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const resp = await axios.post("/user/login/", loginData)
+      const resp = await axios.post(`${serverUrl}/user/login/`, loginData)
       // Clear error message
       setLoginError({ errPresent: false, errMsg: "" })
 

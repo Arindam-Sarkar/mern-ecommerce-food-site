@@ -3,6 +3,7 @@
 # dependencies
 /mern-ecommerce-food-site-client/node_modules
 /mern-ecommerce-food-site-server/node_modules
+/mern-ecommerce-food-site-client/build
 
 
 # misc

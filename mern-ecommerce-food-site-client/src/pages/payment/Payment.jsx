@@ -15,6 +15,7 @@ import axios from 'axios';
 import './payment.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { serverUrl } from '../../serverUrl.js'
 
 const Payment = ({ paymentDetails }) => {
   const orderItemData = useSelector((state) => state.foodItem.orderItemData)
@@ -71,9 +72,9 @@ const Payment = ({ paymentDetails }) => {
   const writeUserOrderdata = async (orderData) => {
 
     // localhost:8800/api/order/getall/6354d1a46af5e310faf1c749
-
+    // `${serverUrl}/order/create/`
     try {
-      const resp = await axios.post("/order/create/", orderData)
+      const resp = await axios.post(`${serverUrl}/order/create/`, orderData)
       if (resp.data?._id !== undefined) {
         console.log("Order Successful");
       }

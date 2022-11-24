@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect } from 'react';
 import PastOrderDetails from '../../components/pastOrderDetails/PastOrderDetails';
+import { serverUrl } from '../../serverUrl';
 
 
 const UserAccount = () => {
@@ -54,8 +55,10 @@ const UserAccount = () => {
     // localhost:8800/api/order/getall/6354d1a46af5e310faf1c749
     const fetchUserPastOrders = async () => {
 
+      // `${serverUrl}/user/register/`
+
       try {
-        const resp = await axios.get(`/order/getall/${userAuthData._id}`)
+        const resp = await axios.get(`${serverUrl}/order/getall/${userAuthData._id}`)
 
         // Store the past orders
 
@@ -87,7 +90,8 @@ const UserAccount = () => {
     else {
       try {
         const { oldPassword, newPassword } = regData
-        const resp = await axios.post(`/user/updatePass/${userAuthData._id}`,
+        // `${serverUrl}/user/register/`
+        const resp = await axios.post(`${serverUrl}/user/updatePass/${userAuthData._id}`,
           { oldPassword, newPassword })
 
         if (resp.data?._id !== undefined) {
@@ -115,7 +119,7 @@ const UserAccount = () => {
     const { addressLine1, addressLine2, city, state, phone, ...remaining } = regData
 
     try {
-      const resp = await axios.post(`/user/updateAdd/${userAuthData._id}`,
+      const resp = await axios.post(`${serverUrl}/user/updateAdd/${userAuthData._id}`,
         { addressLine1, addressLine2, city, state, phone }
       )
 
