@@ -23,7 +23,6 @@ const NavbarComp = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-  const logoutToast = () => toast("Wow so easy!");
 
   const navigateHandler = (path) => {
     setShowSideMenu(false)
