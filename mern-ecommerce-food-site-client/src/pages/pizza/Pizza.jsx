@@ -7,7 +7,6 @@ import { foodDataResource } from '../../foodData'
 const Pizza = () => {
   const [pizzaData, setPizzaData] = useState(foodDataResource);
 
-
   return (
     <>
       {/* <NavbarComp /> */}

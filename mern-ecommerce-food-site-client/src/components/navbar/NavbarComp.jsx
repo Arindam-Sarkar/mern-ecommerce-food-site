@@ -78,6 +78,7 @@ const NavbarComp = () => {
             <input
               className='navbarSearchContSearch'
               type="search" name="search" id="search"
+              value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
             < RiSearchLine
