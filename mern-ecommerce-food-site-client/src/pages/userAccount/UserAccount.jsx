@@ -32,9 +32,9 @@ const UserAccount = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   console.log("userPastOrders =", userPastOrders);
-  // }, [userPastOrders])
+  useEffect(() => {
+    console.log("userAuthData =", userAuthData);
+  }, [userAuthData])
 
 
   // Update regdata so that the address form has prefilled values
@@ -88,27 +88,32 @@ const UserAccount = () => {
       setUpdateError({ errPresent: true, errMsg: "Error - Both Passwords Must be Same" })
     }
     else {
-      try {
-        const { oldPassword, newPassword } = regData
-        // `${serverUrl}/user/register/`
-        const resp = await axios.post(`${serverUrl}/user/updatePass/${userAuthData._id}`,
-          { oldPassword, newPassword })
+      // Prevent password change of demo account
+      if (userAuthData.email === "u4@u4.com") {
+        toast("Demo Account.Cannot change password :)")
+      }
+      else {
+        try {
+          const { oldPassword, newPassword } = regData
+          // `${serverUrl}/user/register/`
+          const resp = await axios.post(`${serverUrl}/user/updatePass/${userAuthData._id}`,
+            { oldPassword, newPassword })
 
-        if (resp.data?._id !== undefined) {
-          // Update Successful, put this user data in redux store
-          dispatch(addUserAuthData(resp.data))
-          toast("Password Update Successful")
+          if (resp.data?._id !== undefined) {
+            // Update Successful, put this user data in redux store
+            dispatch(addUserAuthData(resp.data))
+            toast("Password Update Successful")
 
-          // Clear error message
-          setUpdateError({ errPresent: false, errMsg: "" })
+            // Clear error message
+            setUpdateError({ errPresent: false, errMsg: "" })
+          }
+        } catch (error) {
+          if ((error.response.data.message?.match('Wrong password'))) {
+            setUpdateError({ errPresent: true, errMsg: "Error - Old Password Wrong" })
+            toast("Error - Old Password Wrong")
+          }
+          window.scrollTo(0, 0)
         }
-      } catch (error) {
-        if ((error.response.data.message?.match('Wrong password'))) {
-          setUpdateError({ errPresent: true, errMsg: "Error - Old Password Wrong" })
-          toast("Error - Old Password Wrong")
-        }
-        window.scrollTo(0, 0)
-
       }
     }
   }
